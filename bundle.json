@@ -1,0 +1,45 @@
+{
+    "name": "@ohos/notification_cangjie_api",
+    "description": "Provide the ability to publish notifications for applications",
+    "version": "6.0",
+    "license": "Apache-2.0",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "base/notification/notification_cangjie_api"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+        "name": "notification_cangjie_api",
+        "subsystem": "notification",
+        "syscap": [
+            "SystemCapability.Notification.Notification",
+            "SystemCapability.Notification.ReminderAgent",
+            "SystemCapability.Notification.NotificationSettings",
+            "SystemCapability.Notification.CommonEvent"
+        ],
+        "features": [],
+        "adapted_system_type": [
+            "standard"
+        ],
+        "rom": "30000KB",
+        "ram": "100000KB",
+        "deps": {
+            "components": [
+                "cangjie_api"
+            ]
+        },
+        "build": {
+            "sub_component": [
+                "//base/notification/notification_cangjie_api/ohos/common_event_manager:ohos.common_event_manager"
+            ],
+            "inner_kits": [
+                {
+                    "name": "//base/notification/notification_cangjie_api/ohos/common_event_manager:ohos.common_event_manager"
+                }
+            ],
+            "test": [
+            ]
+        }
+    }
+}
