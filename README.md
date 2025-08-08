@@ -19,7 +19,7 @@ Each application can subscribe to common events as required. After your applicat
 ## Directory Structure
 
 ```
-base/notification/notification_cangjie_api
+base/notification/notification_cangjie_wrapper
 │── ohos             # Cangjie Common Event and Notification code
 ├── figures          # architecture pictures
 ```
@@ -28,4 +28,4 @@ base/notification/notification_cangjie_api
 
 **Common Event and Notification**
 
-notification_cangjie_api
+notification_cangjie_wrapper

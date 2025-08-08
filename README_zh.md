@@ -19,7 +19,7 @@ OpenHarmony通过CES（Common Event Service，公共事件服务）为应用程�
 ## 目录
 
 ```
-base/notification/notification_cangjie_api
+base/notification/notification_cangjie_wrapper
 │── ohos             # 仓颉事件通知接口实现
 ├── figures          # 存放readme中的架构图
 ```
@@ -28,4 +28,4 @@ base/notification/notification_cangjie_api
 
 **事件通知子系统**
 
-notification_cangjie_api
+notification_cangjie_wrapper
