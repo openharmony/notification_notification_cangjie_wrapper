@@ -1,4 +1,4 @@
-# 事件通知子系统
+# 事件通知仓颉
 
 ## 简介
 
@@ -14,7 +14,7 @@ OpenHarmony通过CES（Common Event Service，公共事件服务）为应用程�
 
 ### 架构图
 
-![](figures/cesfwk_architecture_diagram.png "公共事件服务架构图")
+![](figures/notification_cangjie_wrapper_architecture.png "公共事件服务架构图")
 
 ## 目录
 
@@ -26,6 +26,6 @@ base/notification/notification_cangjie_wrapper
 
 ## 相关仓
 
-**事件通知子系统**
+**事件通知仓颉**
 
 notification_cangjie_wrapper
