@@ -23,7 +23,7 @@
             "standard"
         ],
         "rom": "400KB",
-        "ram": "1200KB",
+        "ram": "432KB",
         "deps": {
             "components": [
                 "cangjie_ark_interop"
