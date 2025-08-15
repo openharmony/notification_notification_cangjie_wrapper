@@ -1,8 +1,8 @@
-# 事件通知仓颉
+# 事件通知仓颉接口
 
 ## 简介
 
-OpenHarmony通过CES（Common Event Service，公共事件服务）为应用程序提供订阅、发布、退订公共事件的能力。
+事件通知仓颉接口是在 OpenHarmony 上基于事件通知子系统能力之上封装的仓颉API。OpenHarmony通过CES（Common Event Service，公共事件服务）为应用程序提供订阅、发布、退订公共事件的能力。
 
 公共事件可分为系统公共事件和自定义公共事件。
 
@@ -28,4 +28,4 @@ base/notification/notification_cangjie_wrapper
 
 **事件通知仓颉**
 
-notification_cangjie_wrapper
+[notification_common_event_service](https://gitee.com/openharmony/notification_common_event_service/blob/master/README_zh.md)
