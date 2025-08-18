@@ -1,8 +1,8 @@
-# Common Event and Notification
+# notification_cangjie_wrapper
 
 ## Introduction
 
-OpenHarmony provides a Common Event Service (CES) for applications to subscribe to, publish, and unsubscribe from common events.
+The notification_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based on the capabilities of the Common Event Service (CES) Subsystem. OpenHarmony provides a CES for applications to subscribe to, publish, and unsubscribe from common events.
 
 Common events in OpenHarmony are classified into system common events and custom common events.
 
@@ -14,7 +14,7 @@ Each application can subscribe to common events as required. After your applicat
 
 ### Architecture
 
-![](figures/en_cesfwk_architecture_diagram.png "CES Architecture")
+![](figures/notification_cangjie_wrapper_architecture_en.png "notification_cangjie_wrapper Architecture")
 
 ## Directory Structure
 
@@ -26,6 +26,4 @@ base/notification/notification_cangjie_wrapper
 
 ## Repositories Involved
 
-**Common Event and Notification**
-
-notification_cangjie_wrapper
+[notification_common_event_service](https://gitee.com/openharmony/notification_common_event_service/blob/master)

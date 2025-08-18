@@ -26,6 +26,4 @@ base/notification/notification_cangjie_wrapper
 
 ## 相关仓
 
-**事件通知仓颉**
-
 [notification_common_event_service](https://gitee.com/openharmony/notification_common_event_service/blob/master/README_zh.md)
