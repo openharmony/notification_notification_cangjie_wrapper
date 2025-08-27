@@ -15,22 +15,7 @@
 
 package ohos.common_event_manager
 
-import ohos.common_event_publish_data.CCommonEventPublishData
-import ohos.common_event_subscribe_info.CSubscribeInfo
+import ohos.hilog.HilogChannel
 
-foreign {
-    func CJ_PublishEvent(event: CString, userId: Int32): Int32
-
-    func CJ_PublishEventWithData(event: CString, userId: Int32, options: CCommonEventPublishData): Int32
-
-    func CJ_SetStaticSubscriberState(enable: Bool): Int32
-
-    func CJ_RemoveStickyCommonEvent(event: CString): Int32
-
-    func CJ_CreateSubscriber(id: Int64): Int64
-
-    func CJ_Subscribe(id: Int64, funcId: Int64): Int32
-
-    func CJ_Unsubscribe(id: Int64): Int32
-}
-
+const UNDEFINED_USER: Int32 = -3
+let CES_LOG = HilogChannel(0, 0xD001200, "CJ-CommonEventManager")

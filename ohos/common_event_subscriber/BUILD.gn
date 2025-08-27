@@ -14,30 +14,17 @@
 import("//build/ohos.gni")
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.common_event_manager") {
+ohos_cangjie_shared_library("ohos.common_event_subscriber") {
   sources = [
-    "common_event_manager_errors.cj",
-    "common_event_manager_ffi.cj",
-    "common_event_manager_utils.cj",
-    "common_event_manager.cj",
-    "support.cj",
+    "common_event_subscriber.cj",
+    "common_event_subscriber_ffi.cj",
   ]
 
   external_deps = [ "common_event_service:cj_common_event_manager_ffi" ]
 
   cj_external_deps = [
-    "cangjie_ark_interop:ohos.business_exception",
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
-    "hiviewdfx_cangjie_wrapper:ohos.hilog",
-  ]
-
-  cj_deps = [
-    "../common_event_data:ohos.common_event_data",
-    "../common_event_publish_data:ohos.common_event_publish_data",
-    "../common_event_subscribe_info:ohos.common_event_subscribe_info",
-    "../common_event_subscriber:ohos.common_event_subscriber",
-    "../value_type:ohos.value_type"
   ]
 
   subsystem_name = "notification"

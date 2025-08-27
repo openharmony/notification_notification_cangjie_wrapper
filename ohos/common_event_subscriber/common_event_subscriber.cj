@@ -13,37 +13,10 @@
  * limitations under the License.
  */
 
-package ohos.common_event_manager
+package ohos.common_event_subscriber
 
-import ohos.labels.*
-import ohos.ffi.*
-import ohos.base.*
-
-foreign {
-    func CJ_GetCode(id: Int64): RetDataI32
-
-    func CJ_SetCode(id: Int64, code: Int32): Int32
-
-    func CJ_GetData(id: Int64): RetDataCString
-
-    func CJ_SetData(id: Int64, data: CString): Int32
-
-    func CJ_SetCodeAndData(id: Int64, code: Int32, data: CString): Int32
-
-    func CJ_IsOrderedCommonEvent(id: Int64): RetDataBool
-
-    func CJ_IsStickyCommonEvent(id: Int64): RetDataBool
-
-    func CJ_AbortCommonEvent(id: Int64): Int32
-
-    func CJ_ClearAbortCommonEvent(id: Int64): Int32
-
-    func CJ_GetAbortCommonEvent(id: Int64): RetDataBool
-
-    func CJ_GetSubscribeInfo(id: Int64): RetDataI64
-
-    func CJ_FinishCommonEvent(id: Int64): Int32
-}
+import ohos.labels.APILevel
+import ohos.ffi.{RemoteDataLite, releaseFFIData}
 
 /**
  * The CommonEventSubscriber module provides APIs for describing the common event subscriber.
@@ -51,12 +24,11 @@ foreign {
  */
 @!APILevel[
     21,
-    atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventSubscriber <: RemoteDataLite {
-    init(id: Int64) {
+    protected init(id: Int64) {
         super(id)
     }
 
