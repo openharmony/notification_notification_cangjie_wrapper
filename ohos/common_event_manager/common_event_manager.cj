@@ -15,67 +15,45 @@
 
 package ohos.common_event_manager
 
-import ohos.ffi.*
-import ohos.hilog.*
-import std.collection.*
-import ohos.base.*
-import ohos.labels.*
+import ohos.labels.APILevel
+import ohos.ffi.{Callback1Param, INVALID_CODE}
+import ohos.common_event_data.CCommonEventData
+import ohos.common_event_publish_data.CCommonEventPublishData
+import ohos.business_exception.{BusinessException, AsyncCallback}
+public import ohos.common_event_data.CommonEventData
+public import ohos.common_event_publish_data.CommonEventPublishData
+public import ohos.common_event_subscribe_info.CommonEventSubscribeInfo
+public import ohos.common_event_subscriber.CommonEventSubscriber
+public import ohos.value_type.ValueType
 
-let CES_LOG = HilogChannel(0, 0xD001200, "CJ-CommonEventManager")
-
+/**
+ * The CommonEventManager module provides common event capabilities, including the capabilities to publish, subscribe to, and unsubscribe from common events.
+ * @relation declare namespace commonEventManager
+ */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventManager {
     /**
-     * Publishes a common event.
-     *
-     * @param { String } event - Name of the common event to publish.
-     * @throws { BusinessException } 1500004 - If not System services.
-     * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
-     * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @throws { BusinessException } 1500009 - If error obtaining system parameters.
-     * @brief publish(event: string, callback: AsyncCallback<void>): void
-     */
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Notification.CommonEvent"
-    ]
-    public static func publish(event: String): Unit {
-        unsafe {
-            let cEvent = LibC.mallocCString(event)
-            let retCode = CJ_PublishEvent(cEvent, UNDEFINED_USER)
-            LibC.free(cEvent)
-            throwIfNotSuccess(retCode, "publish")
-        }
-    }
-
-    /**
-     * Publishes a common event with given attributes.
+     * Publishes an ordered, sticky, or standard common event.
      *
      * @param { String } event - Name of the common event to publish.
      * @param { CommonEventPublishData } options - Attributes of the common event to publish.
-     * @throws { BusinessException } 1500004 - If not System services or System app.
+     * @throws { BusinessException } 1500003 - The common event sending frequency too high.
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @throws { BusinessException } 1500009 - If error obtaining system parameters.
-     * @brief publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
+     * @relation export function publish(event: string, callback: AsyncCallback<void>): void
+     * @relation export function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static func publish(event: String, options: CommonEventPublishData): Unit {
+    public static func publish(event: String, options!: CommonEventPublishData =  CommonEventPublishData()): Unit {
         unsafe {
             try (
                 cEvent = LibC.mallocCString(event).asResource(),
@@ -88,48 +66,46 @@ public class CommonEventManager {
     }
 
     /**
-     * Creates a subscriber.
+     * create the CommonEventSubscriber for the SubscriberInfo.
      *
-     * @param { CommonEventSubscribeInfo } subscribeInfo - Subscriber information.
+     * @param { CommonEventSubscribeInfo } subscribeInfo - Indicates the information of the subscriber.
      * @returns { CommonEventSubscriber } CommonEventSubscriber instance.
-     * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
+     * @relation function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber {
-        let ret = unsafe { CJ_CreateSubscriber(subscribeInfo.getID()) }
+        let ret = unsafe { CJ_CreateSubscriber(0) }
         if (ret == Int64(INVALID_CODE)) {
-            throw BusinessException(getErrorCode(INVALID_CODE),
-                "CommonEventManager: createSubscriber failed: ${getErrorMsg(INVALID_CODE)}")
+            throw BusinessException(getErrorCode(ERROR_CES_UNINITIALIZED),
+                "CommonEventManager: createSubscriber failed: ${getErrorMsg(ERROR_CES_UNINITIALIZED)}")
         }
         return CommonEventSubscriber(ret)
     }
 
     /**
-     * Creates a subscriber.
+     * subscribe an ordered, sticky, or standard common event.
      *
-     * @param { CommonEventSubscriber } subscriber - Subscriber instance..
+     * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
+     * @throws { BusinessException } 801 - capability not supported
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
+     * @throws { BusinessException } 1500010 - The count of subscriber exceed system specification.
+     * @relation export function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static func subscribe(subscriber: CommonEventSubscriber, callback: (CommonEventData) -> Unit): Unit {
+    public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): Unit {
         let wrapper = {
             value: CCommonEventData =>
             let commonData = CommonEventData(value)
-            callback(commonData)
+            callback(None, commonData) // TODO(luoming): return error code from ffi.
         }
         let lambdaData = Callback1Param<CCommonEventData, Unit>(wrapper)
         let retCode = unsafe { CJ_Subscribe(subscriber.getID(), lambdaData.getID()) }
@@ -137,17 +113,16 @@ public class CommonEventManager {
     }
 
     /**
-     * Creates a subscriber.
+     * unsubscribe from an ordered, sticky, or standard common event.
      *
-     * @param { CommonEventSubscriber } subscriber - Subscriber instance..
+     * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
+     * @throws { BusinessException } 801 - capability not supported
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
+     * @relation export function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
