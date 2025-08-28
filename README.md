@@ -24,7 +24,7 @@ base/notification/notification_cangjie_wrapper
 └── ohos             # Cangjie Common Event Manager code
 ```
 
-## Constaints
+## Constraints
 
 The currently open CommonEvent apis only support standard devices.
 
