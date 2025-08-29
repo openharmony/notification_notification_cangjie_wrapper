@@ -1,6 +1,6 @@
 {
     "name": "@ohos/notification_cangjie_wrapper",
-    "description": "Provide the ability to publish notifications for applications",
+    "description": "notification_cangjie_wrapper provides the capabilities to create subscribers, subscribe to, publish, and unsubscribe from common events",
     "version": "6.0",
     "license": "Apache-2.0",
     "publishAs": "code-segment",
