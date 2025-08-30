@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The notification_notification_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based on the capabilities of the Common Event Service (CES) Subsystem. OpenHarmony provides a CES for applications to subscribe to, publish, and unsubscribe from common events.
+The notification_notification_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based on the capabilities of the Common Event Service (CES) Subsystem. OpenHarmony provides a CES for applications to subscribe to, publish, and unsubscribe from common events. The currently open CommonEvent apis only support standard devices.
 
 Common events in OpenHarmony are classified into system common events and custom common events.
 
@@ -12,31 +12,53 @@ Common events in OpenHarmony are classified into system common events and custom
 
 Each application can subscribe to common events as required. After your application subscribes to a common event, the system sends it to your application every time the event is published. Such an event may be published by the system, other applications, or your own application.
 
+## System Architecture
+
 **Figure 1** notification_cangjie_wrapper architecture
 
-![notification_cangjie_wrapper Architecture](figures/notification_cangjie_wrapper_architecture_en.png "notification_cangjie_wrapper Architecture")
+![notification_cangjie_wrapper Architecture](figures/notification_cangjie_wrapper_architecture_en.png)
+
+As shown in the architecture pictures, the notification_notification_cangjie_wrapper provides interfaces for publishing public events, creating subscribers, subscribing, unsubscribing, etc.
+
+- createSubscriber: use subscription information to create a public event subscriber, which can specify the public events the subscriber wants to subscribe to, the permissions required from the publisher, the subscriber's priority, etc.
+
+- subscribe: complete the subscription for the specified subscriber.
+
+- unsubscribe: cancel the subscription for the specified subscriber.
+
+- publish: publish a common event with the specified name and attributes.
+
+- Cangjie Notification FFI Interface Definition: Responsible for defining the C-interoperable Cangjie interface, which is used to realize Cangjie's notification capabilities.
+
+- Common Event Manager Service: Responsible for providing the basic common event fuctions, and encapsulating the C interface for interoperation with Cangjie.
 
 ## Directory Structure
 
-```cangjie
-base/notification/notification_cangjie_wrapper
-├── figures          # architecture pictures
-└── ohos             # Cangjie Common Event Manager code
 ```
-
-## Constraints
-
-The currently open CommonEvent apis only support standard devices.
+base/notification/notification_cangjie_wrapper
+├── figures         # architecture pictures
+└── ohos            # Cangjie CommonEvent code
+    ├── common_event_data
+    ├── common_event_manager
+    ├── common_event_publish_data
+    ├── common_event_subscribe_info
+    ├── common_event_subscriber
+    └── value_type
+```
 
 ## Usage
 
-The notification_notification_cangjie_wrapper provides interfaces for publishing public events, creating subscribers, subscribing, unsubscribing, etc.
+The following features are provided:
 
-A public event consists of two parts: an event of type string and options of type CommonEventPublishData. The event represents the name of the public event, and the options represent the attribute information of the public event.
+- create subscriber.
+- publish common evnet.
+- subscribe common event.
+- unsubscribe common event.
 
-The CommonEventSubscribeInfo type is for subscription information, used to create a public event subscriber, which can specify the public events the subscriber wants to subscribe to, the permissions required from the publisher, the subscriber's priority, and so on.
+Compare to the ArkTs, the following features are not provided:
 
-The CommonEventSubscriber is a public event subscriber used to obtain information about accepted public events and to set the processing information for public events.
+- send and process events between different threads within the same process or within the same thread.
+- distributed notification service.
 
 For relevant API of CommonEventManager, please refer to [ohos.common_event_manager](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md); for relevant guidelines, please refer to [CommonEvent Development Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_en/basic-services/common-event).
 
@@ -47,3 +69,7 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 ## Repositories Involved
 
 [notification_common_event_service](https://gitee.com/openharmony/notification_common_event_service/blob/master)
+
+[hiviewdfx_hiviewdfx_cangjie_wrapper](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
+
+[arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
