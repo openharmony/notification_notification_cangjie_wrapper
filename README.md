@@ -18,9 +18,9 @@ Each application can subscribe to common events as required. After your applicat
 
 ![notification_cangjie_wrapper Architecture](figures/notification_cangjie_wrapper_architecture_en.png)
 
-As shown in the architecture pictures, the notification_notification_cangjie_wrapper provides interfaces for publishing public events, creating subscribers, subscribing, unsubscribing, etc.
+As shown in the architecture pictures, the notification_notification_cangjie_wrapper provides interfaces for publishing common events, creating subscribers, subscribing, unsubscribing, etc.
 
-- createSubscriber: use subscription information to create a public event subscriber, which can specify the public events the subscriber wants to subscribe to, the permissions required from the publisher, the subscriber's priority, etc.
+- createSubscriber: use subscription information to create a common event subscriber, subscription information can specify the common events the subscriber wants to subscribe to, the permissions required from the publisher, the subscriber's priority, etc.
 
 - subscribe: complete the subscription for the specified subscriber.
 
@@ -37,13 +37,14 @@ As shown in the architecture pictures, the notification_notification_cangjie_wra
 ```
 base/notification/notification_cangjie_wrapper
 ├── figures         # architecture pictures
-└── ohos            # Cangjie CommonEvent code
-    ├── common_event_data
-    ├── common_event_manager
-    ├── common_event_publish_data
-    ├── common_event_subscribe_info
-    ├── common_event_subscriber
-    └── value_type
+└── ohos            # Cangjie notification code
+│   ├── common_event_data
+│   ├── common_event_manager
+│   ├── common_event_publish_data
+│   ├── common_event_subscribe_info
+│   ├── common_event_subscriber
+│   └── value_type
+└── test            # Cangjie notification test cases
 ```
 
 ## Usage
