@@ -70,7 +70,3 @@ base/notification/notification_cangjie_wrapper
 ## 相关仓
 
 [公共事件子系统](https://gitee.com/openharmony/notification_common_event_service/blob/master/README_zh.md)
-
-[DFX仓颉接口](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
-
-[仓颉互操作 API 公共仓](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
