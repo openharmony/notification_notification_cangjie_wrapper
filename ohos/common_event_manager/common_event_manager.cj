@@ -31,8 +31,7 @@ public import ohos.value_type.ValueType
  * @relation declare namespace commonEventManager
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventManager {
@@ -49,8 +48,7 @@ public class CommonEventManager {
      * @relation export function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func publish(event: String, options!: CommonEventPublishData =  CommonEventPublishData()): Unit {
@@ -73,8 +71,7 @@ public class CommonEventManager {
      * @relation function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber {
@@ -97,8 +94,7 @@ public class CommonEventManager {
      * @relation export function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): Unit {
@@ -122,8 +118,7 @@ public class CommonEventManager {
      * @relation export function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func unsubscribe(subscriber: CommonEventSubscriber): Unit {

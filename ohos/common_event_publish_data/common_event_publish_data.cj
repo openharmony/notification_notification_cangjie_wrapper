@@ -26,8 +26,7 @@ import ohos.ffi.{CArrString, CTypeResource}
  * @relation export interface CommonEventPublishData
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventPublishData {
@@ -37,8 +36,7 @@ public class CommonEventPublishData {
      * @relation bundleName?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var bundleName: String
@@ -48,8 +46,7 @@ public class CommonEventPublishData {
      * @relation data?: string
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var data: String
@@ -59,8 +56,7 @@ public class CommonEventPublishData {
      * @relation code?: number
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var code: Int32
@@ -70,8 +66,7 @@ public class CommonEventPublishData {
      * @relation subscriberPermissions?: Array<string>
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var subscriberPermissions: Array<String>
@@ -81,8 +76,7 @@ public class CommonEventPublishData {
      * @relation isOrdered?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var isOrdered: Bool
@@ -92,8 +86,7 @@ public class CommonEventPublishData {
      * @relation isSticky?: boolean
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent",
         permission: "ohos.permission.COMMONEVENT_STICKY"
     ]
@@ -104,8 +97,7 @@ public class CommonEventPublishData {
      * @relation parameters?: { [key: string]: any }
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var parameters: HashMap<String, ValueType>
@@ -113,8 +105,7 @@ public class CommonEventPublishData {
      * init the CommonEventPublishData
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public init(
