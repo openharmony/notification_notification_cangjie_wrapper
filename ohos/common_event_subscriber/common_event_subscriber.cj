@@ -23,8 +23,7 @@ import ohos.ffi.{RemoteDataLite, releaseFFIData}
  * @relation export interface CommonEventSubscriber
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventSubscriber <: RemoteDataLite {
