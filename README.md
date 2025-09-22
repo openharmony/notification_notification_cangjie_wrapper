@@ -26,8 +26,6 @@ As shown in the architecture diagram, the notification Cangjie API provides the 
 - Publish: Publish a common event with the specified name and attributes.
 - Cangjie Notification FFI Interface Definition: Responsible for defining C language interoperation Cangjie interfaces, used to implement Cangjie notification capabilities.
 - Common Event Manager Service: Responsible for providing common event basic services, encapsulating C interfaces for interoperation with Cangjie.
-- Cangjie DFX: Provides a logging system, enabling applications/services to output log content according to specified levels, identifiers, and format strings.
-- Cangjie Interop: Provides APILevel and Businessexception.
 
 ## Directory Structure
 
@@ -42,6 +40,8 @@ base/notification/notification_cangjie_wrapper
 │   ├── common_event_subscriber     # Common event subscriber module
 │   └── value_type                  # Common event multi-value type implementation
 └── test            # Cangjie notification test cases
+    └── APILevel22
+        └── common_event_manager # Common event test cases
 ```
 
 ## Usage
@@ -53,7 +53,7 @@ The current notification Cangjie API provides the following functions:
 - Subscribe to common events.
 - Unsubscribe.
 
-Compared to ArkTS, the following functions are not supported:
+Compared to ArkTS API, the following functions are not supported:
 
 - The ability to send and process events between different threads within the same process or within the same thread.
 - User notification service.
@@ -67,5 +67,7 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 ## Repositories Involved
 
 [arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
+
 [hiviewdfx_hiviewdfx_cangjie_wrapper](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
+
 [notification_common_event_service](https://gitcode.com/openharmony/notification_common_event_service)

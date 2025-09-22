@@ -26,8 +26,6 @@
 - 发布公共事件：发布指定名称与属性的公共事件。
 - 仓颉事件通知FFI接口定义： 负责定义C语言互操作仓颉接口，用于实现仓颉事件通知能力。
 - 公共事件管理服务：负责提供公共事件基础服务，封装C语言接口提供给仓颉进行互操作。
-- 仓颉DFX：提供日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容。
-- 仓颉互操作：提供API标签与异常类。
 
 ## 目录
 
@@ -41,7 +39,9 @@ base/notification/notification_cangjie_wrapper
 │   ├── common_event_subscribe_info # 公共事件订阅信息模块
 │   ├── common_event_subscriber     # 公共事件订阅者模块
 │   └── value_type                  # 公共事件多值类型实现
-└── test            # 仓颉事件通知测试用例
+└── test            # 测试用例
+    └── APILevel22
+        └── common_event_manager # 公共事件测试用例
 ```
 
 ## 使用说明
@@ -53,12 +53,12 @@ base/notification/notification_cangjie_wrapper
 - 订阅公共事件。
 - 取消订阅。
 
-与ArkTS相比，暂不支持以下功能：
+与ArkTS提供的API能力相比，暂不支持以下功能：
 
 - 在同一进程不同线程间或同一线程内发送和处理事件的能力。
 - 用户通知服务。
 
-公共事件相关API请参见[ohos.common_event_manager](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-common_event_manager.md)，相关指导请参见[公共事件开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_zh_cn/basic-services/common-event)。
+事件通知相关接口请参见[公共事件API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-common_event_manager.md)，相关开发指导请参见[公共事件开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_zh_cn/basic-services/common-event)。
 
 ## 参与贡献
 
@@ -67,5 +67,7 @@ base/notification/notification_cangjie_wrapper
 ## 相关仓
 
 [arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
+
 [hiviewdfx_hiviewdfx_cangjie_wrapper](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
+
 [notification_common_event_service](https://gitcode.com/openharmony/notification_common_event_service)
