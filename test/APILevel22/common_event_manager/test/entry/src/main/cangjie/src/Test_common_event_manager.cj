@@ -43,7 +43,7 @@ class Test_common_event_manager {
         .COMMON_EVENT_SCREEN_ON
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCreateSubscribeInfo(): Unit {
         let events = [support1]
         let info = CommonEventSubscribeInfo(events, priority: 100000)
@@ -56,7 +56,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testCreateSubscribe(): Unit {
         let events = [support1]
         let info = CommonEventSubscribeInfo(events)
@@ -65,7 +65,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSubscribeAndPublish(): Unit {
         let events = [support1]
         let info = CommonEventSubscribeInfo(events)
@@ -88,7 +88,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testUnsubscribe(): Unit {
         let events = [support1]
         let info = CommonEventSubscribeInfo(events)
@@ -103,7 +103,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testSelfDefinedEvent(): Unit {
         let events = ["Support.Commoneventscreenon"]
         let info00 = CommonEventSubscribeInfo(events)
@@ -145,7 +145,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPriority(): Unit {
         let events = [support1]
         let info1 = CommonEventSubscribeInfo(events)
@@ -169,7 +169,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func testPermissions(): Unit {
         func callback(err: ?BusinessException, c: ?CommonEventData): Unit {
             Hilog.info(0, "TestCEM", "callback suceess!")
@@ -207,7 +207,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_support_value1(): Unit {
         Support()
         @Expect(Support.COMMON_EVENT_ABILITY_ADDED, "common.event.ABILITY_ADDED")
@@ -260,7 +260,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_support_value2(): Unit {
         @Expect(Support.COMMON_EVENT_CONNECTIVITY_CHANGE, "usual.event.CONNECTIVITY_CHANGE")
         @Expect(Support.COMMON_EVENT_CALL_STATE_CHANGED, "usual.event.CALL_STATE_CHANGED")
@@ -307,7 +307,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_support_value3(): Unit {
         @Expect(Support.COMMON_EVENT_MANAGE_PACKAGE_STORAGE, "usual.event.MANAGE_PACKAGE_STORAGE")
         @Expect(Support.COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED, "usual.event.nfc.action.ADAPTER_STATE_CHANGED")
@@ -345,7 +345,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_support_value4(): Unit {
         @Expect(Support.COMMON_EVENT_SCREEN_UNLOCKED, "usual.event.SCREEN_UNLOCKED")
         @Expect(Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED, "usual.event.THERMAL_LEVEL_CHANGED")
@@ -393,7 +393,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_common_event_subscribeInfo(): Unit {
         let event = [support1]
         let info = CommonEventSubscribeInfo(
@@ -413,7 +413,7 @@ class Test_common_event_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_Construct(): Unit {
         let obj1 = CommonEventManager()
     }
