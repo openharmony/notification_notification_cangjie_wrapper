@@ -64,7 +64,7 @@ protected struct CSubscribeInfo {
  * @relation export interface CommonEventSubscribeInfo
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventSubscribeInfo {
@@ -73,7 +73,7 @@ public class CommonEventSubscribeInfo {
      * @relation events: Array<string>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var events: Array<String>
@@ -82,7 +82,7 @@ public class CommonEventSubscribeInfo {
      * @relation priority?: number
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var priority: Int32
@@ -92,7 +92,7 @@ public class CommonEventSubscribeInfo {
      * @relation userId?: number
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var userId: Int32
@@ -101,7 +101,7 @@ public class CommonEventSubscribeInfo {
      * @relation publisherPermission?: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var publisherPermission: String
@@ -110,7 +110,7 @@ public class CommonEventSubscribeInfo {
      * @relation publisherDeviceId?: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var publisherDeviceId: String
@@ -119,7 +119,7 @@ public class CommonEventSubscribeInfo {
      * @relation publisherBundleName?: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var publisherBundleName: String
@@ -129,7 +129,7 @@ public class CommonEventSubscribeInfo {
     * init the CommonEventSubscribeInfo
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public init(
