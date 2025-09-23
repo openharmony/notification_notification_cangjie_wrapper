@@ -26,6 +26,8 @@
 - 发布公共事件：发布指定名称与属性的公共事件。
 - 仓颉事件通知FFI接口定义：负责定义C语言互操作仓颉接口，用于实现仓颉事件通知能力。
 - 公共事件管理服务：负责提供公共事件基础服务，封装C语言接口提供给仓颉进行互操作。
+- cangjie_ark_interop：负责提供仓颉注解定义，用于对API进行标注，以及提供抛向用户的BusinessException异常类定义。
+- hiviewdfx_cangjie_wrapper：负责提供日志接口，用于在关键路径打印日志。
 
 ## 目录
 
@@ -40,8 +42,7 @@ base/notification/notification_cangjie_wrapper
 │   ├── common_event_subscriber     # 公共事件订阅者模块
 │   └── value_type                  # 公共事件多值类型实现
 └── test            # 测试用例
-    └── APILevel22
-        └── common_event_manager # 公共事件测试用例
+    └── common_event_manager # 公共事件测试用例
 ```
 
 ## 使用说明
