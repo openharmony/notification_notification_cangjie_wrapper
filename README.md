@@ -26,6 +26,8 @@ As shown in the architecture diagram, the notification Cangjie API provides the 
 - Publish: Publish a common event with the specified name and attributes.
 - Cangjie Notification FFI Interface Definition: Responsible for defining C language interoperation Cangjie interfaces, used to implement Cangjie notification capabilities.
 - Common Event Manager Service: Responsible for providing common event basic services, encapsulating C interfaces for interoperation with Cangjie.
+- cangjie_ark_interop: Provides Cangjie annotation definitions for API annotation and BusinessException exception class definition for user-facing exceptions.
+- hiviewdfx_cangjie_wrapper: Provides logging interfaces for printing logs on critical paths.
 
 ## Directory Structure
 
@@ -40,8 +42,7 @@ base/notification/notification_cangjie_wrapper
 │   ├── common_event_subscriber     # Common event subscriber module
 │   └── value_type                  # Common event multi-value type implementation
 └── test            # Cangjie notification test cases
-    └── APILevel22
-        └── common_event_manager # Common event test cases
+    └── common_event_manager # Common event test cases
 ```
 
 ## Usage
