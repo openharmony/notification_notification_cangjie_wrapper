@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The notification_notification_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based on the capabilities of the notification subsystem. OpenHarmony provides a Common Event Service (CES) for applications to subscribe to, publish, and unsubscribe from common events. The currently open notification Cangjie API only supports standard devices.
+The notification_notification_cangjie_wrapper offers event communication capabilities for developers engaged in application development using the Cangjie programming language. OpenHarmony provides a Common Event Service (CES) for applications to subscribe to, publish, and unsubscribe from common events. The currently open notification_notification_cangjie_wrapper only supports standard devices.
 
 Common events can be divided into system common events and custom common events.
 
@@ -20,14 +20,25 @@ Each application can subscribe to common events as needed. If an application sub
 
 As shown in the architecture diagram, the notification Cangjie API provides the capabilities to publish common events, create subscribers, subscribe, and unsubscribe.
 
-- Create Subscriber: Create a common event subscriber based on subscription information. The subscription information can specify the common events to subscribe to, the permissions required from the publisher, and set the subscriber's priority.
-- Subscribe: Complete the subscription setting for the specified subscriber.
-- Unsubscribe: Cancel the subscription capability of the specified subscriber.
-- Publish: Publish a common event with the specified name and attributes.
-- Cangjie Notification FFI Interface Definition: Responsible for defining C language interoperation Cangjie interfaces, used to implement Cangjie notification capabilities.
-- Common Event Manager Service: Responsible for providing common event basic services, encapsulating C interfaces for interoperation with Cangjie.
-- cangjie_ark_interop: Provides Cangjie annotation definitions for API annotation and BusinessException exception class definition for user-facing exceptions.
-- hiviewdfx_cangjie_wrapper: Provides logging interfaces for printing logs on critical paths.
+Interface Layer:
+
+- createSubscriber: Provides developers with the capability to create common event subscribers based on subscription information. The subscription information can specify the common events to be subscribed to, the permissions that event publishers must have, and the priority of the subscriber, among other details.
+- subscribe: Provides developers with the capability to perform subscription operations for specified subscribers.
+- unsubscribe: Provides developers with the capability to perform unsubscription operations for specified subscribers.
+- publish: Provides developers with the capability to publish custom common events with specified names and attributes.
+
+Framework Layer:
+
+- CreateSubscriber Wrapper: Implements the encapsulation of subscriber management based on the common event management service provided by the underlying common event subsystem. It enables the capability to create common event subscribers, which is used to obtain information related to received common events and set processing information for common events.
+- Subscribe Wrapper: Implements the encapsulation of subscriber management based on the common event management service provided by the underlying common event subsystem, enabling the subscription capability for specified subscribers.
+- Unsubscribe Wrapper: Implements the encapsulation of subscriber management based on the common event management service provided by the underlying common event subsystem, enabling the unsubscription capability for specified subscribers.
+- Publish Wrapper: Implements the encapsulation of subscriber management based on the common event management service provided by the underlying common event subsystem, enabling the capability to publish custom common events.
+
+Dependency Components Introduction in Architecture:
+
+- common_event_service: Relies on the common event management service capabilities provided by the common event subsystem for the implementation of framework layer capabilities.
+- hiviewdfx_cangjie_wrapper: Depends on HiLog capabilities for printing logs at key points.
+- cangjie_ark_interop: Depends on APILevel class definitions and BusinessException class definitions for API annotation and throwing exceptions to users in error branches.
 
 ## Directory Structure
 
@@ -54,12 +65,14 @@ The current notification Cangjie API provides the following functions:
 - Subscribe to common events.
 - Unsubscribe.
 
+For common event related APIs, please refer to [ohos.common_event_manager](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md). For related guidelines, please refer to [Common Event Development Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_en/basic-services/common-event).
+
+## Constraints
+
 Compared to ArkTS API, the following functions are not supported:
 
 - The ability to send and process events between different threads within the same process or within the same thread.
 - User notification service.
-
-For common event related APIs, please refer to [ohos.common_event_manager](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md). For related guidelines, please refer to [Common Event Development Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_en/basic-services/common-event).
 
 ## Code Contribution
 
