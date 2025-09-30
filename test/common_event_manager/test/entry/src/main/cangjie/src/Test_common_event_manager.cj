@@ -16,9 +16,9 @@
 package ohos_app_cangjie_entry
 
 internal import ohos.ark_interop.*
-internal import PerformanceAnalysisKit.Hilog
-internal import BasicServicesKit.*
-internal import BasicServicesKit.ValueType as CEMValueType
+internal import kit.PerformanceAnalysisKit.Hilog
+internal import kit.BasicServicesKit.*
+internal import kit.BasicServicesKit.ValueType as CEMValueType
 internal import ohos.base.*
 internal import std.runtime.*
 internal import std.sync.*
@@ -30,7 +30,7 @@ import std.unittest.testmacro.*
 import ohos.base.*
 import std.collection.HashMap
 import ohos.business_exception.*
-import PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 @Test
 class Test_common_event_manager {
