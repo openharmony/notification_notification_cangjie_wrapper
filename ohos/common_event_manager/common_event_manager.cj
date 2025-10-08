@@ -30,7 +30,6 @@ public import ohos.value_type.ValueType
 
 /**
  * The CommonEventManager module provides common event capabilities, including the capabilities to publish, subscribe to, and unsubscribe from common events.
- * @relation declare namespace commonEventManager
  */
 @!APILevel[
     22,
@@ -46,8 +45,6 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @throws { BusinessException } 1500009 - If error obtaining system parameters.
-     * @relation export function publish(event: string, callback: AsyncCallback<void>): void
-     * @relation export function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         22,
@@ -70,7 +67,6 @@ public class CommonEventManager {
      *
      * @param { CommonEventSubscribeInfo } subscribeInfo - Indicates the information of the subscriber.
      * @returns { CommonEventSubscriber } CommonEventSubscriber instance.
-     * @relation function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
      */
     @!APILevel[
         22,
@@ -93,7 +89,6 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @throws { BusinessException } 1500010 - The count of subscriber exceed system specification.
-     * @relation export function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
      */
     @!APILevel[
         22,
@@ -117,7 +112,6 @@ public class CommonEventManager {
      * @throws { BusinessException } 801 - capability not supported
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @relation export function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void
      */
     @!APILevel[
         22,

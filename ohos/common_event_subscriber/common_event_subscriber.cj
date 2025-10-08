@@ -22,7 +22,6 @@ import ohos.ffi.{RemoteDataLite, releaseFFIData}
 
 /**
  * The CommonEventSubscriber module provides APIs for describing the common event subscriber.
- * @relation export interface CommonEventSubscriber
  */
 @!APILevel[
     22,
