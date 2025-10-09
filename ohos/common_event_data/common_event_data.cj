@@ -47,7 +47,8 @@ public class CommonEventData {
     public var bundleName: String
     /**
      * Common event data received by the subscriber. The value of this field is the same as that of the code field in
-     * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event. The default value is 0.
+     * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event. The default
+     * value is 0.
      */
     @!APILevel[
         22,
@@ -65,7 +66,8 @@ public class CommonEventData {
     public var data: String
     /**
      * Additional information about the common event received by the subscriber. The value of this field is the same as
-     * that of the parameters field in CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
+     * that of the parameters field in CommonEventPublishData when the publisher uses commonEventManager.publish to
+     * publish a common event.
      */
     @!APILevel[
         22,
