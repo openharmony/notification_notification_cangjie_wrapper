@@ -1,7 +1,7 @@
 {
     "name": "@ohos/notification_cangjie_wrapper",
     "description": "The notification_notification_cangjie_wrapper provides common event management capabilities for developers on OpenHarmony.",
-    "version": "6.0",
+    "version": "6.1",
     "license": "Apache License 2.0",
     "publishAs": "code-segment",
     "segment": {
