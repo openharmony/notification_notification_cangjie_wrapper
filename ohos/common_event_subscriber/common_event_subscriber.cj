@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.common_event_subscriber
 
 import ohos.labels.APILevel
@@ -20,7 +22,6 @@ import ohos.ffi.{RemoteDataLite, releaseFFIData}
 
 /**
  * The CommonEventSubscriber module provides APIs for describing the common event subscriber.
- * @relation export interface CommonEventSubscriber
  */
 @!APILevel[
     since: "22",

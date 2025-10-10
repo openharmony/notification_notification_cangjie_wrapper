@@ -1,4 +1,4 @@
-# notification_notification_cangjie_wrapper
+# notification_notification_cangjie_wrapper(beta feature)
 
 ## Introduction
 

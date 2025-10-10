@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.common_event_data
 
 import std.collection.HashMap
@@ -21,8 +23,6 @@ import ohos.value_type.{ValueType, CArrParameters, Parameters}
 
 /**
  * Common event data.
- *
- * @relation export interface CommonEventData
  */
 @!APILevel[
     since: "22",
@@ -31,8 +31,6 @@ import ohos.value_type.{ValueType, CArrParameters, Parameters}
 public class CommonEventData {
     /**
      * Name of the common event that is being received.
-     *
-     * @relation event: string
      */
     @!APILevel[
         since: "22",
@@ -41,8 +39,6 @@ public class CommonEventData {
     public var event: String
     /**
      * Bundle name. This parameter is left empty by default.
-     *
-     * @relation bundleName?: string
      */
     @!APILevel[
         since: "22",
@@ -52,8 +48,6 @@ public class CommonEventData {
     /**
      * Common event data received by the subscriber. The value of this field is the same as that of the code field in
      * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event. The default value is 0.
-     *
-     * @relation code?: number
      */
     @!APILevel[
         since: "22",
@@ -63,8 +57,6 @@ public class CommonEventData {
     /**
      * Common event data received by the subscriber. The value of this field is the same as that of the data field in
      * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
-     *
-     * @relation data?: string
      */
     @!APILevel[
         since: "22",
@@ -74,8 +66,6 @@ public class CommonEventData {
     /**
      * Additional information about the common event received by the subscriber. The value of this field is the same as
      * that of the parameters field in CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
-     *
-     * @relation parameters?: { [key: string]: any }
      */
     @!APILevel[
         since: "22",

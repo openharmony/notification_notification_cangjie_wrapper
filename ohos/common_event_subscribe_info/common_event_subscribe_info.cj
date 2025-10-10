@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.common_event_subscribe_info
 
 import ohos.ffi.*
@@ -61,7 +63,6 @@ protected struct CSubscribeInfo {
 }
 /**
  * The CommonEventSubscribeInfo module provides APIs for providing subscriber information.
- * @relation export interface CommonEventSubscribeInfo
  */
 @!APILevel[
     since: "22",
@@ -70,7 +71,6 @@ protected struct CSubscribeInfo {
 public class CommonEventSubscribeInfo {
     /**
      * Common events to subscribe to.
-     * @relation events: Array<string>
      */
     @!APILevel[
         since: "22",
@@ -79,7 +79,6 @@ public class CommonEventSubscribeInfo {
     public var events: Array<String>
     /**
      * Subscriber priority. The value ranges from –100 to +1000. If the value exceeds the upper or lower limit, the upper or lower limit is used.
-     * @relation priority?: number
      */
     @!APILevel[
         since: "22",
@@ -89,7 +88,6 @@ public class CommonEventSubscribeInfo {
     /**
      * User ID. If this parameter is not specified, the default value, which is the ID of the current user, will be used.
      * The value must be an existing user ID in the system. Use getOsAccountLocalId to obtain the system account ID and use it as the user ID of the subscriber.
-     * @relation userId?: number
      */
     @!APILevel[
         since: "22",
@@ -98,7 +96,6 @@ public class CommonEventSubscribeInfo {
     public var userId: Int32
     /**
      * Permission of the publisher. The subscriber can receive only the events from the publisher with this permission.
-     * @relation publisherPermission?: string
      */
     @!APILevel[
         since: "22",
@@ -107,7 +104,6 @@ public class CommonEventSubscribeInfo {
     public var publisherPermission: String
     /**
      * Device ID. Use @ohos.deviceInfo to obtain the UDID as the device ID of the subscriber. Not supported currently.
-     * @relation publisherDeviceId?: string
      */
     @!APILevel[
         since: "22",
@@ -116,7 +112,6 @@ public class CommonEventSubscribeInfo {
     public var publisherDeviceId: String
     /**
      * Bundle name of the publisher to subscribe to.
-     * @relation publisherBundleName?: string
      */
     @!APILevel[
         since: "22",

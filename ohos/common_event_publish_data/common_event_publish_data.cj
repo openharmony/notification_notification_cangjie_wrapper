@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.common_event_publish_data
 
 import std.collection.HashMap
@@ -22,8 +24,6 @@ import ohos.ffi.{CArrString, CTypeResource}
 
 /**
  * The CommonEventPublishData module provides APIs for defining common event content and attributes.
- *
- * @relation export interface CommonEventPublishData
  */
 @!APILevel[
     since: "22",
@@ -32,8 +32,6 @@ import ohos.ffi.{CArrString, CTypeResource}
 public class CommonEventPublishData {
     /**
      * Bundle name of the subscriber that can receive the common event.
-     *
-     * @relation bundleName?: string
      */
     @!APILevel[
         since: "22",
@@ -42,8 +40,6 @@ public class CommonEventPublishData {
     public var bundleName: String
     /**
      * Common event data transferred by the publisher. The data size cannot exceed 64 KB.
-     *
-     * @relation data?: string
      */
     @!APILevel[
         since: "22",
@@ -52,8 +48,6 @@ public class CommonEventPublishData {
     public var data: String
     /**
      * Common event data transferred by the publisher. The default value is 0.
-     *
-     * @relation code?: number
      */
     @!APILevel[
         since: "22",
@@ -62,8 +56,6 @@ public class CommonEventPublishData {
     public var code: Int32
     /**
      * Permissions required for subscribers to receive the common event.
-     *
-     * @relation subscriberPermissions?: Array<string>
      */
     @!APILevel[
         since: "22",
@@ -72,8 +64,6 @@ public class CommonEventPublishData {
     public var subscriberPermissions: Array<String>
     /**
      * Whether the common event is an ordered one.
-     *
-     * @relation isOrdered?: boolean
      */
     @!APILevel[
         since: "22",
@@ -82,8 +72,6 @@ public class CommonEventPublishData {
     public var isOrdered: Bool
     /**
      * Whether the common event is a sticky one. Only system applications and system services are allowed to send sticky events.
-     *
-     * @relation isSticky?: boolean
      */
     @!APILevel[
         since: "22",
@@ -93,8 +81,6 @@ public class CommonEventPublishData {
     public var isSticky: Bool
     /**
      * Additional information about the common event transferred by the publisher.
-     *
-     * @relation parameters?: { [key: string]: any }
      */
     @!APILevel[
         since: "22",
