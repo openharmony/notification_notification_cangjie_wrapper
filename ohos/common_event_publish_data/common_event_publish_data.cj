@@ -71,7 +71,8 @@ public class CommonEventPublishData {
     ]
     public var isOrdered: Bool
     /**
-     * Whether the common event is a sticky one. Only system applications and system services are allowed to send sticky events.
+     * Whether the common event is a sticky one. Only system applications and system services are allowed to
+     * send sticky events.
      */
     @!APILevel[
         22,

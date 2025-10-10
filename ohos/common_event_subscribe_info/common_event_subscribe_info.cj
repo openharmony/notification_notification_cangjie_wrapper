@@ -78,7 +78,8 @@ public class CommonEventSubscribeInfo {
     ]
     public var events: Array<String>
     /**
-     * Subscriber priority. The value ranges from –100 to +1000. If the value exceeds the upper or lower limit, the upper or lower limit is used.
+     * Subscriber priority. The value ranges from –100 to +1000. If the value exceeds the upper or lower limit, the
+     * upper or lower limit is used.
      */
     @!APILevel[
         22,
@@ -86,8 +87,9 @@ public class CommonEventSubscribeInfo {
     ]
     public var priority: Int32
     /**
-     * User ID. If this parameter is not specified, the default value, which is the ID of the current user, will be used.
-     * The value must be an existing user ID in the system. Use getOsAccountLocalId to obtain the system account ID and use it as the user ID of the subscriber.
+     * User ID. If this parameter is not specified, the default value, which is the ID of the current user, will be
+     * used.The value must be an existing user ID in the system. Use getOsAccountLocalId to obtain the system account
+     * ID and use it as the user ID of the subscriber.
      */
     @!APILevel[
         22,
