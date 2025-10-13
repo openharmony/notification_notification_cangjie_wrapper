@@ -23,6 +23,7 @@ import ohos.value_type.{ValueType, CArrParameters, Parameters}
 
 /**
  * Common event data.
+ *
  */
 @!APILevel[
     22,
@@ -31,6 +32,7 @@ import ohos.value_type.{ValueType, CArrParameters, Parameters}
 public class CommonEventData {
     /**
      * Name of the common event that is being received.
+     *
      */
     @!APILevel[
         22,
@@ -39,6 +41,7 @@ public class CommonEventData {
     public var event: String
     /**
      * Bundle name. This parameter is left empty by default.
+     *
      */
     @!APILevel[
         22,
@@ -49,6 +52,7 @@ public class CommonEventData {
      * Common event data received by the subscriber. The value of this field is the same as that of the code field in
      * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event. The default
      * value is 0.
+     *
      */
     @!APILevel[
         22,
@@ -58,6 +62,7 @@ public class CommonEventData {
     /**
      * Common event data received by the subscriber. The value of this field is the same as that of the data field in
      * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
+     *
      */
     @!APILevel[
         22,
@@ -68,6 +73,7 @@ public class CommonEventData {
      * Additional information about the common event received by the subscriber. The value of this field is the same as
      * that of the parameters field in CommonEventPublishData when the publisher uses commonEventManager.publish to
      * publish a common event.
+     *
      */
     @!APILevel[
         22,

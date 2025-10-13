@@ -219,7 +219,7 @@ func getValue(value: ValueType): (Int8, CPointer<Unit>, Int64) {
             case ArrayFd(v) =>
                 throwIfEmpty(v)
                 return (ARRAYFD_TYPE, createArrPtr<Int32>(v), v.size)
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(1500009, "Error obtaining system parameters.")
         }
     }
 }
