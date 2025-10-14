@@ -43,9 +43,9 @@ public class CommonEventManager {
      * @param { String } event - Name of the common event to publish.
      * @param { CommonEventPublishData } options - Attributes of the common event to publish.
      * @throws { BusinessException } 1500003 - The common event sending frequency too high.
-     * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
-     * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @throws { BusinessException } 1500009 - If error obtaining system parameters.
+     * @throws { BusinessException } 1500007 - Failed to send the message to the common event service.
+     * @throws { BusinessException } 1500008 - Failed to initialize the common event service.
+     * @throws { BusinessException } 1500009 - Failed to obtain system parameters.
      */
     @!APILevel[
         22,
@@ -64,10 +64,11 @@ public class CommonEventManager {
     }
 
     /**
-     * create the CommonEventSubscriber for the SubscriberInfo.
+     * Create the CommonEventSubscriber for the SubscriberInfo.
      *
      * @param { CommonEventSubscribeInfo } subscribeInfo - Indicates the information of the subscriber.
      * @returns { CommonEventSubscriber } CommonEventSubscriber instance.
+     * @throws { BusinessException } 1500008 - Common Event Service does not complete initialization.
      */
     @!APILevel[
         22,
@@ -83,12 +84,13 @@ public class CommonEventManager {
     }
 
     /**
-     * subscribe an ordered, sticky, or standard common event.
+     * Subscribe an ordered, sticky, or standard common event.
      *
      * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
-     * @throws { BusinessException } 801 - capability not supported
-     * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
-     * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
+     * @param { AsyncCallback<CommonEventData> } callback - Callback used to return the result.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @throws { BusinessException } 1500007 - Failed to send the message to the common event service.
+     * @throws { BusinessException } 1500008 - Failed to initialize the common event service.
      * @throws { BusinessException } 1500010 - The count of subscriber exceed system specification.
      */
     @!APILevel[
@@ -107,12 +109,12 @@ public class CommonEventManager {
     }
 
     /**
-     * unsubscribe from an ordered, sticky, or standard common event.
+     * Unsubscribe from an ordered, sticky, or standard common event.
      *
      * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
-     * @throws { BusinessException } 801 - capability not supported
-     * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
-     * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @throws { BusinessException } 1500007 - Failed to send the message to the common event service.
+     * @throws { BusinessException } 1500008 - Failed to initialize the common event service.
      */
     @!APILevel[
         22,
