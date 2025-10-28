@@ -17,7 +17,7 @@
 
 package ohos.common_event_subscribe_info
 
-import ohos.ffi.*
+import ohos.ffi.{cjArr2CArr, CArrString}
 import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
