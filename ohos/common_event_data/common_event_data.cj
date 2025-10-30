@@ -26,7 +26,7 @@ import ohos.value_type.{ValueType, CArrParameters, Parameters}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventData {
@@ -35,7 +35,7 @@ public class CommonEventData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var event: String
@@ -44,7 +44,7 @@ public class CommonEventData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var bundleName: String
@@ -55,7 +55,7 @@ public class CommonEventData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var code: Int32
@@ -65,7 +65,7 @@ public class CommonEventData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var data: String
@@ -76,7 +76,7 @@ public class CommonEventData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var parameters: HashMap<String, ValueType>

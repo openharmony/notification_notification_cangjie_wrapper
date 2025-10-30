@@ -27,7 +27,7 @@ import ohos.ffi.{CArrString, CTypeResource}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventPublishData {
@@ -36,7 +36,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var bundleName: String
@@ -45,7 +45,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var data: String
@@ -54,7 +54,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var code: Int32
@@ -63,7 +63,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var subscriberPermissions: Array<String>
@@ -72,7 +72,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var isOrdered: Bool
@@ -82,7 +82,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent",
         permission: "ohos.permission.COMMONEVENT_STICKY"
     ]
@@ -92,7 +92,7 @@ public class CommonEventPublishData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var parameters: HashMap<String, ValueType>
@@ -100,7 +100,7 @@ public class CommonEventPublishData {
      * init the CommonEventPublishData
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public init(

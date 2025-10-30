@@ -24,7 +24,7 @@ import ohos.ffi.{RemoteDataLite, releaseFFIData}
  * The CommonEventSubscriber module provides APIs for describing the common event subscriber.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventSubscriber <: RemoteDataLite {

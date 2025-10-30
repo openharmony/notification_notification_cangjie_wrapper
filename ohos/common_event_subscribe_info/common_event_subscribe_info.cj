@@ -65,7 +65,7 @@ protected struct CSubscribeInfo {
  * The CommonEventSubscribeInfo module provides APIs for providing subscriber information.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventSubscribeInfo {
@@ -73,7 +73,7 @@ public class CommonEventSubscribeInfo {
      * Common events to subscribe to.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var events: Array<String>
@@ -82,7 +82,7 @@ public class CommonEventSubscribeInfo {
      * upper or lower limit is used.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var priority: Int32
@@ -92,7 +92,7 @@ public class CommonEventSubscribeInfo {
      * ID and use it as the user ID of the subscriber.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var userId: Int32
@@ -100,7 +100,7 @@ public class CommonEventSubscribeInfo {
      * Permission of the publisher. The subscriber can receive only the events from the publisher with this permission.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var publisherPermission: String
@@ -108,7 +108,7 @@ public class CommonEventSubscribeInfo {
      * Device ID. Use @ohos.deviceInfo to obtain the UDID as the device ID of the subscriber. Not supported currently.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var publisherDeviceId: String
@@ -116,7 +116,7 @@ public class CommonEventSubscribeInfo {
      * Bundle name of the publisher to subscribe to.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var publisherBundleName: String
@@ -126,7 +126,7 @@ public class CommonEventSubscribeInfo {
     * init the CommonEventSubscribeInfo
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public init(

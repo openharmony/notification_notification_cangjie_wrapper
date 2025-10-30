@@ -33,7 +33,7 @@ public import ohos.value_type.ValueType
  * to, and unsubscribe from common events.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventManager {
@@ -48,7 +48,7 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500009 - Failed to obtain system parameters.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func publish(event: String, options!: CommonEventPublishData =  CommonEventPublishData()): Unit {
@@ -71,7 +71,7 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500008 - Common Event Service does not complete initialization.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber {
@@ -94,7 +94,7 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500010 - The count of subscriber exceed system specification.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): Unit {
@@ -117,7 +117,7 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500008 - Failed to initialize the common event service.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func unsubscribe(subscriber: CommonEventSubscriber): Unit {
