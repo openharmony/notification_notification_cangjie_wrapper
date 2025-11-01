@@ -21,8 +21,6 @@ import ohos.business_exception.{BusinessException, getUniversalErrorMsg}
 import std.collection.HashMap
 import ohos.ffi.{INVALID_CODE, SUCCESS_CODE}
 
-const MEMORY_ERROR: Int32 = -2
-const ERROR_CES_FAILED: Int32 = 1
 const ERROR_NULL_ACTION: Int32 = 1500001
 const ERROR_SANDBOX_APPLICATION: Int32 = 1500002
 const ERROR_FREQUENCY_TOO_HIGH: Int32 = 1500003
@@ -47,6 +45,8 @@ let ERROR_CODE_MAP = HashMap<Int32, String>(
 )
 
 func getErrorCode(code: Int32): Int32 {
+    const MEMORY_ERROR: Int32 = -2
+    const ERROR_CES_FAILED: Int32 = 1
     if (code == MEMORY_ERROR || code == INVALID_CODE || code == ERROR_CES_FAILED) {
         ERROR_CES_UNINITIALIZED
     } else {
