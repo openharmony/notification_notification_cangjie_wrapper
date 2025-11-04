@@ -43,7 +43,7 @@ protected struct CSubscribeInfo {
                 publisherPermission = LibC.mallocCString(info.publisherPermission)
                 publisherDeviceId = LibC.mallocCString(info.publisherDeviceId)
                 publisherBundleName = LibC.mallocCString(info.publisherBundleName)
-            } catch(e: BusinessException) {
+            } catch(e: Exception) {
                 LibC.free(publisherPermission)
                 LibC.free(publisherDeviceId)
                 LibC.free(publisherBundleName)
