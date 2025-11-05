@@ -21,6 +21,7 @@ import ohos.labels.APILevel
 import ohos.ffi.{Callback1Param, INVALID_CODE}
 import ohos.common_event_data.CCommonEventData
 import ohos.common_event_publish_data.CCommonEventPublishData
+import ohos.common_event_subscribe_info.CSubscribeInfo
 import ohos.business_exception.{BusinessException, AsyncCallback}
 public import ohos.common_event_data.CommonEventData
 public import ohos.common_event_publish_data.CommonEventPublishData
@@ -75,12 +76,15 @@ public class CommonEventManager {
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber {
-        let ret = unsafe { CJ_CreateSubscriber(0) }
-        if (ret == Int64(INVALID_CODE)) {
+        var errorCode: Int32 = 0
+        var info = CSubscribeInfo(subscribeInfo)
+        let id = unsafe { FfiCommonEventManagerCreateSubscriber(inout info, inout errorCode) }
+        info.free()
+        if (errorCode == INVALID_CODE) {
             throw BusinessException(getErrorCode(ERROR_CES_UNINITIALIZED),
                 "CommonEventManager: createSubscriber failed: ${getErrorMsg(ERROR_CES_UNINITIALIZED)}")
         }
-        return CommonEventSubscriber(ret)
+        return CommonEventSubscriber(id)
     }
 
     /**

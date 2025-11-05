@@ -34,5 +34,7 @@ foreign {
     func CJ_Subscribe(id: Int64, funcId: Int64): Int32
 
     func CJ_Unsubscribe(id: Int64): Int32
+
+    func FfiCommonEventManagerCreateSubscriber(info: CPointer<CSubscribeInfo>, errorCode: CPointer<Int32>): Int64
 }
 
