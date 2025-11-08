@@ -41,15 +41,6 @@ public class CommonEventPublishData {
     ]
     public var bundleName: String
     /**
-     * Common event data transferred by the publisher. The data size cannot exceed 64 KB.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Notification.CommonEvent"
-    ]
-    public var data: String
-    /**
      * Common event data transferred by the publisher. The default value is 0.
      *
      */
@@ -58,6 +49,15 @@ public class CommonEventPublishData {
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var code: Int32
+    /**
+     * Common event data transferred by the publisher. The data size cannot exceed 64 KB.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public var data: String
     /**
      * Permissions required for subscribers to receive the common event.
      *
