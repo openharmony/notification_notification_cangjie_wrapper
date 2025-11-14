@@ -22,6 +22,7 @@ ohos_cangjie_shared_library("ohos.common_event_publish_data") {
   ]
 
   cj_external_deps = [
+    "cangjie_ark_interop:ohos.business_exception",
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
   ]

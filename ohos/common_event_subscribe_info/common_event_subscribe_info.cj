@@ -30,6 +30,9 @@ protected struct CSubscribeInfo {
     var publisherDeviceId: CString = CString(CPointer<UInt8>())
     var publisherBundleName: CString = CString(CPointer<UInt8>())
 
+    /**
+    * @throws { BusinessException } 1500009 - Error obtaining system parameters.
+    */
     protected init(info: CommonEventSubscribeInfo) {
         priority = info.priority
         userId = info.userId
@@ -47,7 +50,7 @@ protected struct CSubscribeInfo {
                 LibC.free(publisherPermission)
                 LibC.free(publisherDeviceId)
                 LibC.free(publisherBundleName)
-                throw e
+                throw BusinessException(1500009, "Error obtaining system parameters.")
             }
         }
     }
