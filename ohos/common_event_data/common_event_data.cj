@@ -19,11 +19,10 @@ package ohos.common_event_data
 
 import std.collection.HashMap
 import ohos.labels.APILevel
-import ohos.value_type.{ValueType, CArrParameters, Parameters}
+import ohos.value_type.{CommonEventValueType, CArrParameters, Parameters}
 
 /**
  * Common event data.
- *
  */
 @!APILevel[
     since: "22",
@@ -32,7 +31,6 @@ import ohos.value_type.{ValueType, CArrParameters, Parameters}
 public class CommonEventData {
     /**
      * Name of the common event that is being received.
-     *
      */
     @!APILevel[
         since: "22",
@@ -41,7 +39,6 @@ public class CommonEventData {
     public var event: String
     /**
      * Bundle name. This parameter is left empty by default.
-     *
      */
     @!APILevel[
         since: "22",
@@ -50,9 +47,7 @@ public class CommonEventData {
     public var bundleName: String
     /**
      * Common event data received by the subscriber. The value of this field is the same as that of the code field in
-     * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event. The default
-     * value is 0.
-     *
+     * CommonEventPublishData when the publisher uses CommonEventManager.publish to publish a common event. The default value is 0.
      */
     @!APILevel[
         since: "22",
@@ -62,7 +57,6 @@ public class CommonEventData {
     /**
      * Common event data received by the subscriber. The value of this field is the same as that of the data field in
      * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
-     *
      */
     @!APILevel[
         since: "22",
@@ -73,13 +67,12 @@ public class CommonEventData {
      * Additional information about the common event received by the subscriber. The value of this field is the same as
      * that of the parameters field in CommonEventPublishData when the publisher uses commonEventManager.publish to
      * publish a common event.
-     *
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public var parameters: HashMap<String, ValueType>
+    public var parameters: HashMap<String, CommonEventValueType>
 
     protected init(eventData: CCommonEventData) {
         event = eventData.event.toString()
@@ -88,7 +81,7 @@ public class CommonEventData {
         data = eventData.data.toString()
         let size = eventData.parameters.size
         let dataPtr = eventData.parameters.head
-        parameters = HashMap<String, ValueType>()
+        parameters = HashMap<String, CommonEventValueType>()
         for (i in 0..size) {
             let cp = unsafe { dataPtr.read(i) }
             let parameter = Parameters(cp)
