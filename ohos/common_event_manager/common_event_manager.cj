@@ -27,7 +27,7 @@ public import ohos.common_event_data.CommonEventData
 public import ohos.common_event_publish_data.CommonEventPublishData
 public import ohos.common_event_subscribe_info.CommonEventSubscribeInfo
 public import ohos.common_event_subscriber.CommonEventSubscriber
-public import ohos.value_type.ValueType
+public import ohos.value_type.CommonEventValueType
 
 /**
  * The CommonEventManager module provides common event capabilities, including the capabilities to publish, subscribe
@@ -39,10 +39,10 @@ public import ohos.value_type.ValueType
 ]
 public class CommonEventManager {
     /**
-     * Publishes an ordered, sticky, or standard common event.
+     * Publishes a common event.
      *
-     * @param { String } event - Name of the common event to publish.
-     * @param { CommonEventPublishData } options - Attributes of the common event to publish.
+     * @param { String } event - Name of the common event to publish. For details, see System Common Events.
+     * @param { CommonEventPublishData } [options] - Attributes of the common event to publish.
      * @throws { BusinessException } 1500003 - The common event sending frequency too high.
      * @throws { BusinessException } 1500007 - Failed to send the message to the common event service.
      * @throws { BusinessException } 1500008 - Failed to initialize the common event service.
@@ -50,7 +50,9 @@ public class CommonEventManager {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Notification.CommonEvent"
+        syscap: "SystemCapability.Notification.CommonEvent",
+        throwexception: true,
+        workerthread: true
     ]
     public static func publish(event: String, options!: CommonEventPublishData =  CommonEventPublishData()): Unit {
         unsafe {
@@ -65,15 +67,17 @@ public class CommonEventManager {
     }
 
     /**
-     * Create the CommonEventSubscriber for the SubscriberInfo.
+     * Creates a subscriber.
      *
-     * @param { CommonEventSubscribeInfo } subscribeInfo - Indicates the information of the subscriber.
+     * @param { CommonEventSubscribeInfo } subscribeInfo - Subscriber information.
      * @returns { CommonEventSubscriber } CommonEventSubscriber instance.
      * @throws { BusinessException } 1500008 - Common Event Service does not complete initialization.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Notification.CommonEvent"
+        syscap: "SystemCapability.Notification.CommonEvent",
+        throwexception: true,
+        workerthread: true
     ]
     public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber {
         var errorCode: Int32 = 0
@@ -88,9 +92,9 @@ public class CommonEventManager {
     }
 
     /**
-     * Subscribe an ordered, sticky, or standard common event.
+     * Subscribes to a common event.
      *
-     * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
+     * @param { CommonEventSubscriber } subscriber - Subscriber object.
      * @param { AsyncCallback<CommonEventData> } callback - Callback used to return the result.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 1500007 - Failed to send the message to the common event service.
@@ -99,7 +103,8 @@ public class CommonEventManager {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Notification.CommonEvent"
+        syscap: "SystemCapability.Notification.CommonEvent",
+        throwexception: true
     ]
     public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): Unit {
         let wrapper = {
@@ -113,16 +118,18 @@ public class CommonEventManager {
     }
 
     /**
-     * Unsubscribe from an ordered, sticky, or standard common event.
+     * Unsubscribes from a common event.
      *
-     * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
+     * @param { CommonEventSubscriber } subscriber - Subscriber object.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 1500007 - Failed to send the message to the common event service.
      * @throws { BusinessException } 1500008 - Failed to initialize the common event service.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Notification.CommonEvent"
+        syscap: "SystemCapability.Notification.CommonEvent",
+        throwexception: true,
+        workerthread: true
     ]
     public static func unsubscribe(subscriber: CommonEventSubscriber): Unit {
         let retCode = unsafe { CJ_Unsubscribe(subscriber.getID()) }

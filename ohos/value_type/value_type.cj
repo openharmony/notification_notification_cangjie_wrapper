@@ -26,7 +26,7 @@ import ohos.labels.APILevel
     since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
-public enum ValueType {
+public enum CommonEventValueType {
     /**
      * Int32 type value
      */
@@ -35,85 +35,95 @@ public enum ValueType {
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     Int32Value(Int32)
+    |
     /**
      * Float64 type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     Float64Value(Float64)
+    |
     /**
      * String type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     StringValue(String)
+    |
     /**
      * Bool type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     BoolValue(Bool)
+    |
     /**
      * FD type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    Fd(Int32)
+    FD(Int32)
+    |
     /**
      * String array type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     ArrayString(Array<String>)
+    |
     /**
      * Int32 array type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     ArrayInt32(Array<Int32>)
+    |
     /**
      * Int64 array type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     ArrayInt64(Array<Int64>)
+    |
     /**
      * Bool array type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     ArrayBool(Array<Bool>)
+    |
     /**
      * Float64 array type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     ArrayFloat64(Array<Float64>)
+    |
     /**
      * FD array type value
      */
-    | @!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    ArrayFd(Array<Int32>)
+    ArrayFD(Array<Int32>)
     | ...
 }

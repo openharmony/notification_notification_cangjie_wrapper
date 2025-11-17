@@ -89,7 +89,7 @@ public class CommonEventSubscribeInfo {
     ]
     public var publisherPermission: String
     /**
-     * Device ID. Use @ohos.deviceInfo to obtain the UDID as the device ID of the subscriber. Not supported currently.
+     * Device ID. Use @ohos.device_info to obtain the UDID as the device ID of the subscriber. Not supported currently.
      */
     @!APILevel[
         since: "22",
@@ -98,7 +98,7 @@ public class CommonEventSubscribeInfo {
     public var publisherDeviceId: String
     /**
      * User ID. If this parameter is not specified, the default value, which is the ID of the current user, will be
-     * used.The value must be an existing user ID in the system. Use getOsAccountLocalId to obtain the system account
+     * used. The value must be an existing user ID in the system. Use getOsAccountLocalId to obtain the system account
      * ID and use it as the user ID of the subscriber.
      */
     @!APILevel[
@@ -107,8 +107,10 @@ public class CommonEventSubscribeInfo {
     ]
     public var userId: Int32
     /**
-     * Subscriber priority. The value ranges from –100 to +1000. If the value exceeds the upper or lower limit, the
-     * upper or lower limit is used.
+     * Subscriber priority. The value ranges from –100 to +1000. If the value exceeds the upper or lower limit, the upper or lower limit is used.
+     * The default value is 0.
+     * The higher the numerical value, the higher the priority.
+     * The value should be set by subscribers of the same event.
      */
     @!APILevel[
         since: "22",
@@ -126,8 +128,16 @@ public class CommonEventSubscribeInfo {
 
     private static const UNDEFINED_USER = -3i32
     /**
-    * init the CommonEventSubscribeInfo
-    */
+     * CommonEventSubscribeInfo constructor.
+     *
+     * @param { Array<String> } events - Common events to subscribe to.
+     * @param { String } [publisherPermission] - Permission of the publisher.
+     * @param { String } [publisherDeviceId] - Device ID.
+     * @param { Int32 } [userId] - User ID.
+     * @param { Int32 } [priority] - The value ranges from –100 to +1000. If the value exceeds the upper or lower limit,
+     * the upper or lower limit is used.
+     * @param { String } [publisherBundleName] - Bundle name of the publisher to subscribe to.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"

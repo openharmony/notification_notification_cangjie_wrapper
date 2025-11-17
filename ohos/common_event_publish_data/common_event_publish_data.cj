@@ -19,13 +19,12 @@ package ohos.common_event_publish_data
 
 import std.collection.HashMap
 import ohos.labels.APILevel
-import ohos.value_type.{ValueType, CArrParameters, CParameters, createCpCString, createCArrParam}
+import ohos.value_type.{CommonEventValueType, CArrParameters, CParameters, createCpCString, createCArrParam}
 import ohos.ffi.{CArrString, CTypeResource}
 import ohos.business_exception.BusinessException
 
 /**
  * The CommonEventPublishData module provides APIs for defining common event content and attributes.
- *
  */
 @!APILevel[
     since: "22",
@@ -34,7 +33,7 @@ import ohos.business_exception.BusinessException
 public class CommonEventPublishData {
     /**
      * Bundle name of the subscriber that can receive the common event.
-     *
+     * The default value is empty, which means any subscriber can receive public events, regardless of the subscribed bundlName.
      */
     @!APILevel[
         since: "22",
@@ -42,8 +41,7 @@ public class CommonEventPublishData {
     ]
     public var bundleName: String
     /**
-     * Common event data transferred by the publisher. The default value is 0.
-     *
+     * Common event data transferred by the publisher.
      */
     @!APILevel[
         since: "22",
@@ -52,7 +50,6 @@ public class CommonEventPublishData {
     public var code: Int32
     /**
      * Common event data transferred by the publisher. The data size cannot exceed 64 KB.
-     *
      */
     @!APILevel[
         since: "22",
@@ -61,7 +58,6 @@ public class CommonEventPublishData {
     public var data: String
     /**
      * Permissions required for subscribers to receive the common event.
-     *
      */
     @!APILevel[
         since: "22",
@@ -70,7 +66,6 @@ public class CommonEventPublishData {
     public var subscriberPermissions: Array<String>
     /**
      * Whether the common event is an ordered one.
-     *
      */
     @!APILevel[
         since: "22",
@@ -78,27 +73,34 @@ public class CommonEventPublishData {
     ]
     public var isOrdered: Bool
     /**
-     * Whether the common event is a sticky one. Only system applications and system services are allowed to
-     * send sticky events.
-     *
+     * Whether the common event is a sticky one. Only system applications and system services are allowed to send sticky events.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Notification.CommonEvent",
-        permission: "ohos.permission.COMMONEVENT_STICKY"
+        permission: "ohos.permission.COMMONEVENT_STICKY",
+        syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var isSticky: Bool
     /**
-     * Additional information about the common event transferred by the publisher.
-     *
+     * The description of the parameters in a common event.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public var parameters: HashMap<String, ValueType>
+    public var parameters: HashMap<String, CommonEventValueType>
     /**
-     * init the CommonEventPublishData
+     * CommonEventPublishData constructor.
+     *
+     * @param { String } [bundleName] - Bundle name of the subscriber that can receive the common event.
+     * @param { String } [data] - Common event data transferred by the publisher. The data size cannot exceed 64 KB.
+     * @param { Int32 } [code] - Common event data transferred by the publisher. The default value is 0.
+     * @param { Array<String> } [subscriberPermissions] - Permissions required for subscribers to
+     * receive the common event.
+     * @param { Bool } [isOrdered] - Whether the common event is an ordered one.
+     * @param { Bool } [isSticky] - Whether the common event is a sticky one. Only system applications
+     * and system services are allowed to send sticky events.
+     * @param { HashMap<String, CommonEventValueType> } [parameters] - The description of the parameters in a common event.
      */
     @!APILevel[
         since: "22",
@@ -111,7 +113,7 @@ public class CommonEventPublishData {
         subscriberPermissions!: Array<String> = Array<String>(),
         isOrdered!: Bool = false,
         isSticky!: Bool = false,
-        parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
+        parameters!: HashMap<String, CommonEventValueType> = HashMap<String, CommonEventValueType>()
     ) {
         this.bundleName = bundleName
         this.data = data

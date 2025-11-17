@@ -36,7 +36,7 @@ const ARRAYFD_TYPE: Int8 = 10
 protected struct Parameters {
     protected Parameters(
         protected let key: String,
-        protected let value: ValueType
+        protected let value: CommonEventValueType
     ) {}
 
     protected init(c: CParameters) {
@@ -47,13 +47,13 @@ protected struct Parameters {
                 case c.valueType == F64_TYPE => Float64Value(CPointer<Float64>(c.value).read())
                 case c.valueType == STRING_TYPE => StringValue(CString(CPointer<UInt8>(c.value)).toString())
                 case c.valueType == BOOL_TYPE => BoolValue(CPointer<Bool>(c.value).read())
-                case c.valueType == FD_TYPE => Fd(CPointer<Int32>(c.value).read())
+                case c.valueType == FD_TYPE => FD(CPointer<Int32>(c.value).read())
                 case c.valueType == ARRSTRING_TYPE => ArrayString(c.toArrString())
                 case c.valueType == ARRAYI32_TYPE => ArrayInt32(c.toArr<Int32>())
                 case c.valueType == ARRAYI64_TYPE => ArrayInt64(c.toArr<Int64>())
                 case c.valueType == ARRAYBOOL_TYPE => ArrayBool(c.toArr<Bool>())
                 case c.valueType == ARRAYF64_TYPE => ArrayFloat64(c.toArr<Float64>())
-                case _ => ArrayFd(c.toArr<Int32>())
+                case _ => ArrayFD(c.toArr<Int32>())
             }
         }
     }
@@ -129,10 +129,7 @@ protected struct CArrParameters {
     }
 }
 
-/**
-* @throws { BusinessException } 1500009 - Error obtaining system parameters.
-*/
-unsafe protected func createCArrParam(parameters: HashMap<String, ValueType>): CArrParameters {
+unsafe protected func createCArrParam(parameters: HashMap<String, CommonEventValueType>): CArrParameters {
     let cp = safeMalloc<CParameters>(count: parameters.size)
     let ptr = CArrParameters(cp, parameters.size)
     var count = 0
@@ -199,7 +196,7 @@ func throwIfEmpty<T>(arr: Array<T>): Unit {
     }
 }
 
-func getValue(value: ValueType): (Int8, CPointer<Unit>, Int64) {
+func getValue(value: CommonEventValueType): (Int8, CPointer<Unit>, Int64) {
     unsafe {
         match (value) {
             case Int32Value(v) => return (INT_TYPE, createPtr<Int32>(v), 1)
@@ -208,7 +205,7 @@ func getValue(value: ValueType): (Int8, CPointer<Unit>, Int64) {
                 let ptr = LibC.mallocCString(v).getChars()
                 return (STRING_TYPE, CPointer<Unit>(ptr), 1)
             case BoolValue(v) => return (BOOL_TYPE, createPtr<Bool>(v), 1)
-            case Fd(v) => return (FD_TYPE, createPtr<Int32>(v), 1)
+            case FD(v) => return (FD_TYPE, createPtr<Int32>(v), 1)
             case ArrayString(v) =>
                 throwIfEmpty(v)
                 let ptr = createCpCString(v)
@@ -225,7 +222,7 @@ func getValue(value: ValueType): (Int8, CPointer<Unit>, Int64) {
             case ArrayFloat64(v) =>
                 throwIfEmpty(v)
                 return (ARRAYF64_TYPE, createArrPtr<Float64>(v), v.size)
-            case ArrayFd(v) =>
+            case ArrayFD(v) =>
                 throwIfEmpty(v)
                 return (ARRAYFD_TYPE, createArrPtr<Int32>(v), v.size)
             case _ => throw BusinessException(1500009, "Error obtaining system parameters.")
