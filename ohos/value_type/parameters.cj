@@ -66,13 +66,16 @@ protected struct CParameters {
     let value: CPointer<Unit>
     let size: Int64
 
+    /**
+    * @throws { BusinessException } 1500009 - Error obtaining system parameters.
+    */
     init(p: Parameters) {
         this.key = unsafe { LibC.mallocCString(p.key) }
         (valueType, this.value, this.size) = try {
             getValue(p.value)
         } catch (e: Exception) {
             unsafe { LibC.free(this.key) }
-            throw e
+            throw BusinessException(1500009, "Error obtaining system parameters.")
         }
     }
 
@@ -136,7 +139,7 @@ unsafe protected func createCArrParam(parameters: HashMap<String, CommonEventVal
         } catch (e: Exception) {
             freeCArrParam(ptr.head, count)
             LibC.free(cp)
-            throw e
+            throw BusinessException(1500009, "Error obtaining system parameters.")
         }
         ptr.head.write(count, value)
         count++
@@ -164,6 +167,9 @@ unsafe func createArrPtr<T>(value: Array<T>): CPointer<Unit> where T <: CType {
     return CPointer<Unit>(ptr)
 }
 
+/**
+* @throws { BusinessException } 1500009 - Error obtaining system parameters.
+*/
 unsafe protected func createCpCString(value: Array<String>): CPointer<CString> {
     let ptr = safeMalloc<CString>(count: value.size)
     for (i in 0..value.size) {
@@ -172,7 +178,7 @@ unsafe protected func createCpCString(value: Array<String>): CPointer<CString> {
         } catch (e: Exception) {
             freeCpCString(ptr, i)
             LibC.free(ptr)
-            throw e
+            throw BusinessException(1500009, "Error obtaining system parameters.")
         }
     }
     return ptr

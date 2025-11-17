@@ -21,6 +21,7 @@ import std.collection.HashMap
 import ohos.labels.APILevel
 import ohos.value_type.{CommonEventValueType, CArrParameters, CParameters, createCpCString, createCArrParam}
 import ohos.ffi.{CArrString, CTypeResource}
+import ohos.business_exception.BusinessException
 
 /**
  * The CommonEventPublishData module provides APIs for defining common event content and attributes.
@@ -133,6 +134,10 @@ protected struct CCommonEventPublishData {
     let isOrdered: Bool
     let isSticky: Bool
     var parameters: CArrParameters = CArrParameters(CPointer<CParameters>(), 0)
+
+    /**
+    * @throws { BusinessException } 1500009 - Error obtaining system parameters.
+    */
     protected init(c: CommonEventPublishData) {
         unsafe {
             try {
@@ -152,7 +157,7 @@ protected struct CCommonEventPublishData {
                 }
             } catch (e: Exception) {
                 free()
-                throw e
+                throw BusinessException(1500009, "Error obtaining system parameters.")
             }
         }
     }
