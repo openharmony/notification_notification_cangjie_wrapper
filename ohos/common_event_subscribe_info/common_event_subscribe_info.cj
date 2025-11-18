@@ -47,9 +47,7 @@ protected struct CSubscribeInfo {
                 publisherDeviceId = LibC.mallocCString(info.publisherDeviceId)
                 publisherBundleName = LibC.mallocCString(info.publisherBundleName)
             } catch(e: Exception) {
-                LibC.free(publisherPermission)
-                LibC.free(publisherDeviceId)
-                LibC.free(publisherBundleName)
+                free()
                 throw BusinessException(1500009, "Error obtaining system parameters.")
             }
         }
