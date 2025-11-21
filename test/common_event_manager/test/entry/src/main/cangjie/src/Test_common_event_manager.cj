@@ -18,7 +18,7 @@ package ohos_app_cangjie_entry
 internal import ohos.ark_interop.*
 internal import kit.PerformanceAnalysisKit.Hilog
 internal import kit.BasicServicesKit.*
-internal import kit.BasicServicesKit.ValueType as CEMValueType
+internal import kit.BasicServicesKit.CommonEventValueType as CEMValueType
 internal import ohos.base.*
 internal import std.runtime.*
 internal import std.sync.*
