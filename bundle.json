@@ -38,6 +38,9 @@
             "inner_kits": [
                 {
                     "name": "//base/notification/notification_cangjie_wrapper/ohos/common_event_manager:ohos.common_event_manager"
+                },
+                {
+                    "name": "//base/notification/notification_cangjie_wrapper:copy_sdk_notification_cangjie_libs"
                 }
             ],
             "test": []
