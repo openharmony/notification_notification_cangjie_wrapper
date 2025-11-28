@@ -26,7 +26,7 @@ import ohos.labels.APILevel
     since: "22",
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
-public class CommonEventSupport {
+public class Support {
     /**
      * This commonEvent means when the device is booted or system upgrade completed, and only be sent by system.
      * This API can be called only by system applications.
