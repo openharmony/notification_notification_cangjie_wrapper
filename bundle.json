@@ -12,12 +12,7 @@
     "component": {
         "name": "notification_cangjie_wrapper",
         "subsystem": "notification",
-        "syscap": [
-            "SystemCapability.Notification.Notification",
-            "SystemCapability.Notification.ReminderAgent",
-            "SystemCapability.Notification.NotificationSettings",
-            "SystemCapability.Notification.CommonEvent"
-        ],
+        "syscap": [],
         "features": [],
         "adapted_system_type": [
             "standard"
