@@ -21,6 +21,7 @@
         "ram": "432KB",
         "deps": {
             "components": [
+                "ability_cangjie_wrapper",
                 "cangjie_ark_interop",
                 "common_event_service",
                 "hiviewdfx_cangjie_wrapper"
@@ -28,7 +29,9 @@
         },
         "build": {
             "sub_component": [
-                "//base/notification/notification_cangjie_wrapper/ohos/common_event_manager:ohos.common_event_manager"
+                "//base/notification/notification_cangjie_wrapper/ohos/notification_manager:ohos.notification_manager",
+                "//base/notification/notification_cangjie_wrapper/ohos/common_event_manager:ohos.common_event_manager",
+                "//base/notification/notification_cangjie_wrapper/kit/NotificationKit:kit.NotificationKit"
             ],
             "inner_kits": [
                 {
