@@ -23,7 +23,8 @@ notification_cangjie_wrapper_packages_ohos = [
     "//base/notification/notification_cangjie_wrapper/ohos/common_event_subscribe_info:ohos.common_event_subscribe_info",
     "//base/notification/notification_cangjie_wrapper/ohos/common_event_publish_data:ohos.common_event_publish_data",
     "//base/notification/notification_cangjie_wrapper/ohos/common_event_subscriber:ohos.common_event_subscriber",
-    "//base/notification/notification_cangjie_wrapper/ohos/common_event_data:ohos.common_event_data"
+    "//base/notification/notification_cangjie_wrapper/ohos/common_event_data:ohos.common_event_data",
+    "//base/notification/notification_cangjie_wrapper/ohos/events/emitter:ohos.events.emitter",
 ]
 
 notification_cangjie_wrapper_packages_kit = [

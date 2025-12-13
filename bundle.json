@@ -31,6 +31,7 @@
             "sub_component": [
                 "//base/notification/notification_cangjie_wrapper/ohos/notification_manager:ohos.notification_manager",
                 "//base/notification/notification_cangjie_wrapper/ohos/common_event_manager:ohos.common_event_manager",
+                "//base/notification/notification_cangjie_wrapper/ohos/event/emitter:ohos.events.emitter",
                 "//base/notification/notification_cangjie_wrapper/kit/NotificationKit:kit.NotificationKit"
             ],
             "inner_kits": [
