@@ -150,7 +150,7 @@ public class NotificationContent {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var normal: Option<NotificationBasicContent>
+    public var normal: ?NotificationBasicContent
     /**
      * Long text.
      */
@@ -158,7 +158,7 @@ public class NotificationContent {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var longText: Option<NotificationLongTextContent>
+    public var longText: ?NotificationLongTextContent
     /**
      * Multi-line text.
      */
@@ -166,7 +166,7 @@ public class NotificationContent {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var multiLine: Option<NotificationMultiLineContent>
+    public var multiLine: ?NotificationMultiLineContent
     /**
      * Picture-attached.
      */
@@ -174,7 +174,7 @@ public class NotificationContent {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var picture: Option<NotificationPictureContent>
+    public var picture: ?NotificationPictureContent
     /**
      * System live view. A third-party application cannot directly create a notification of this type.
      * After the system proxy creates a system live view,
@@ -184,7 +184,7 @@ public class NotificationContent {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var systemLiveView: Option<NotificationSystemLiveViewContent>
+    public var systemLiveView: ?NotificationSystemLiveViewContent
 
     /**
      * Create NotificationContent instance.
@@ -202,11 +202,11 @@ public class NotificationContent {
     ]
     public init(
         notificationContentType: ContentType,
-        normal!: Option<NotificationBasicContent> = None,
-        longText!: Option<NotificationLongTextContent> = None,
-        multiLine!: Option<NotificationMultiLineContent> = None,
-        picture!: Option<NotificationPictureContent> = None,
-        systemLiveView!: Option<NotificationSystemLiveViewContent> = None
+        normal!: ?NotificationBasicContent = None,
+        longText!: ?NotificationLongTextContent = None,
+        multiLine!: ?NotificationMultiLineContent = None,
+        picture!: ?NotificationPictureContent = None,
+        systemLiveView!: ?NotificationSystemLiveViewContent = None
     ) {
         this.notificationContentType = notificationContentType
         this.normal = normal
@@ -298,7 +298,7 @@ public open class NotificationBasicContent {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var lockscreenPicture: Option<PixelMap>
+    public var lockscreenPicture: ?PixelMap
 
     /**
      * Create NotificationBasicContent instance.
@@ -316,7 +316,7 @@ public open class NotificationBasicContent {
         title: String,
         text: String,
         additionalText!: String = "",
-        lockscreenPicture!: Option<PixelMap> = None
+        lockscreenPicture!: ?PixelMap = None
     ) {
         this.title = title
         this.text = text
@@ -400,7 +400,7 @@ public class NotificationLongTextContent <: NotificationBasicContent {
         briefText: String,
         expandedTitle: String,
         additionalText!: String = "",
-        lockscreenPicture!: Option<PixelMap> = None
+        lockscreenPicture!: ?PixelMap = None
     ) {
         super(title, text, additionalText: additionalText, lockscreenPicture: lockscreenPicture)
         this.longText = longText
@@ -488,7 +488,7 @@ public class NotificationMultiLineContent <: NotificationBasicContent {
         longTitle: String,
         lines: Array<String>,
         additionalText!: String = "",
-        lockscreenPicture!: Option<PixelMap> = None
+        lockscreenPicture!: ?PixelMap = None
     ) {
         super(title, text, additionalText: additionalText, lockscreenPicture: lockscreenPicture)
         this.briefText = briefText
@@ -575,7 +575,7 @@ public class NotificationPictureContent <: NotificationBasicContent {
         expandedTitle: String,
         picture: PixelMap,
         additionalText!: String = "",
-        lockscreenPicture!: Option<PixelMap> = None
+        lockscreenPicture!: ?PixelMap = None
     ) {
         super(title, text, additionalText: additionalText, lockscreenPicture: lockscreenPicture)
         this.briefText = briefText
@@ -684,7 +684,7 @@ public class NotificationSystemLiveViewContent <: NotificationBasicContent {
         time!: NotificationTime = NotificationTime(),
         progress!: NotificationProgress = NotificationProgress(),
         additionalText!: String = "",
-        lockscreenPicture!: Option<PixelMap> = None
+        lockscreenPicture!: ?PixelMap = None
     ) {
         super(title, text, additionalText: additionalText, lockscreenPicture: lockscreenPicture)
         this.typeCode = typeCode
@@ -741,7 +741,7 @@ public class NotificationCapsule {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var icon: Option<PixelMap>
+    public var icon: ?PixelMap
     /**
      * Background color of the capsule.
      */
@@ -764,7 +764,7 @@ public class NotificationCapsule {
     ]
     public init(
         title!: String = "",
-        icon!: Option<PixelMap> = None,
+        icon!: ?PixelMap = None,
         backgroundColor!: String = ""
     ) {
         this.title = title

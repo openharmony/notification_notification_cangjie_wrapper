@@ -328,7 +328,7 @@ public class NotificationRequest {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var smallIcon: Option<PixelMap>
+    public var smallIcon: ?PixelMap
     /**
      * Large notification icon. Optional field. The total number of the icon pixel bytes cannot exceed 192 KB
      * which is obtained through getPixelBytesNumber. The recommended icon size is 128 px × 128 px.
@@ -337,9 +337,9 @@ public class NotificationRequest {
         since: "24",
         syscap: "SystemCapability.Notification.Notification"
     ]
-    public var largeIcon: Option<PixelMap>
+    public var largeIcon: ?PixelMap
     @!Hide
-    internal var overlayIcon: Option<PixelMap> = None
+    internal var overlayIcon: ?PixelMap = None
     /**
      * Notification group name. This parameter is left blank by default.
      */
@@ -459,8 +459,8 @@ public class NotificationRequest {
      * @param { String } [ label ] - Notification label.
      * @param { Int32 } [ badgeIconStyle ] - Notification badge type.
      * @param { Bool } [ showDeliveryTime ] - Whether to display the time when the notification is delivered.
-     * @param { Option<PixelMap> } [ smallIcon ] - Small notification icon.
-     * @param { Option<PixelMap> } [ largeIcon ] - Large notification icon.
+     * @param { ?PixelMap } [ smallIcon ] - Small notification icon.
+     * @param { ?PixelMap } [ largeIcon ] - Large notification icon.
      * @param { String } [ groupName ] - Notification group name. This parameter is left blank by default.
      * @param { DistributedOptions } [ distributedOption ] - Distributed notification options.
      * @param { UInt32 } [ badgeNumber ] - Number of notifications displayed on the application icon.
@@ -494,8 +494,8 @@ public class NotificationRequest {
         label!: String = "",
         badgeIconStyle!: Int32 = 0,
         showDeliveryTime!: Bool = false,
-        smallIcon!: Option<PixelMap> = None,
-        largeIcon!: Option<PixelMap> = None,
+        smallIcon!: ?PixelMap = None,
+        largeIcon!: ?PixelMap = None,
         groupName!: String = "",
         distributedOption!: DistributedOptions = DistributedOptions(),
         badgeNumber!: UInt32 = 0
