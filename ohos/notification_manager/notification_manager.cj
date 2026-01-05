@@ -34,6 +34,7 @@ let NOTIFICATION_LOG = HilogChannel(0, NOTIFICATION_DOMAIN_ID, "CJ-notification"
  * Publish a notification.
  * If the ID and label of the new notification are the same as that of the previous notification,
  * the new one replaces the previous one.
+ *
  * @param { NotificationRequest } request - ontent and related configuration of the notification to publish.
  * @throws { BusinessException } 1600001 - Internal error.
  * @throws { BusinessException } 1600002 - Marshalling or unmarshalling error.
