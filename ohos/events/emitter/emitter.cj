@@ -30,7 +30,7 @@ let MUTEX_FOR_STRING_EVENT: Mutex = Mutex()
 let MUTEX_FOR_U32_EVENT: Mutex = Mutex()
 
 /**
- * Subscribes to an event in persistent manner and executes a callback after the event is received.
+ * Subscribes to a certain event in persistent manner and receives the event callback.
  *
  * @param { InnerEvent } event - Event to subscribe to in persistent manner. The EventPriority parameter is not required
  * and does not take effect.
@@ -63,7 +63,7 @@ public func on(event: InnerEvent, callback: Callback1Argument<EventData>): Unit 
 }
 
 /**
- * Subscribes to an event in persistent manner and executes a callback after the event is received.
+ * Subscribes to a certain event in persistent manner and receives the event callback.
  *
  * @param { String } eventId - Event to subscribe to in persistent manner. The value cannot be an empty string and
  * exceed 10240 bytes.
@@ -99,10 +99,10 @@ public func on(eventId: String, callback: Callback1Argument<EventData>): Unit {
 }
 
 /**
- * Subscribes to an event in one-shot manner and unsubscribes from it after the event callback is executed.
+ * Subscribes to an event in one-shot manner and unsubscribes from it after the event callback is recieved.
  *
  * @param { InnerEvent } event - Event to subscribe to in one-shot manner. The EventPriority settings do not take effect.
- * @param { Callback1Argument<EventData> } callback - Callback to execute after the event is received.
+ * @param { Callback1Argument<EventData> } callback - Callback to be executed when the event is received.
  */
 @!APILevel[
     since: "24",
@@ -131,7 +131,7 @@ public func once(event: InnerEvent, callback: Callback1Argument<EventData>): Uni
 }
 
 /**
- * Subscribes to an event in one-shot manner and unsubscribes from it after the event callback is executed.
+ * Subscribes to an event in one-shot manner and unsubscribes from it after the event callback is recieved.
  *
  * @param { String } eventId - Event to subscribe to in one-shot manner. The value cannot be an empty string and exceed 10240 bytes.
  * @param { Callback1Argument<EventData> } callback - Callback to be executed when the event is received.
@@ -201,7 +201,7 @@ public func emit(eventId: String, options!: Options = Options(priority: EventPri
 /**
  * Unsubscribes from all events with the specified event ID.
  *
- * @param { UInt32 } eventId - Event ID.
+ * @param { UInt32 } eventId - ID of the event to unsubscribe from.
  */
 @!APILevel[
     since: "24",
@@ -218,7 +218,7 @@ public func off(eventId: UInt32): Unit {
 /**
  * Unsubscribes from all events with the specified event ID.
  *
- * @param { String } eventId - Event ID. The value cannot be an empty string and exceed 10240 bytes.
+ * @param { String } eventId - ID of the event to unsubscribe from. The value cannot be an empty string and exceed 10240 bytes.
  */
 @!APILevel[
     since: "24",
@@ -237,11 +237,9 @@ public func off(eventId: String): Unit {
 }
 
 /**
- * Unsubscribes from an event with the specified event ID and processed by the specified callback.
- * This API takes effect only when callback has been registered through the on or once API.
- * Otherwise, no processing is performed.
+ * Unsubscribes specified callback function from an event.
  *
- * @param { UInt32 } eventId - Event ID.
+ * @param { UInt32 } eventId - ID of the event to unsubscribe from.
  * @param { Callback1Argument<EventData> } callback - Callback to unregister.
  */
 @!APILevel[
@@ -261,11 +259,9 @@ public func off(eventId: UInt32, callback: Callback1Argument<EventData>): Unit {
 }
 
 /**
- * Unsubscribes from an event with the specified event ID and processed by the specified callback.
- * This API takes effect only when callback has been registered through the on or once API.
- * Otherwise, no processing is performed.
+ * Unsubscribes specified callback function from an event.
  *
- * @param { String } eventId - Event ID. The value cannot be an empty string and exceed 10240 bytes.
+ * @param { String } eventId - ID of the event to unsubscribe from. The value cannot be an empty string and exceed 10240 bytes.
  * @param { Callback1Argument<EventData> } callback - Callback to unregister.
  */
 @!APILevel[

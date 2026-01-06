@@ -31,7 +31,7 @@ import std.collection.HashMap
 ]
 public class EventData {
     /**
-     * Data passed in the event.
+     * Data carried by the event.
      */
     @!APILevel[
         since: "24",
@@ -42,7 +42,7 @@ public class EventData {
     /**
      * EventData constructor.
      *
-     * @param { HashMap<String, EventDataType> } [ data ] - Data passed in the event.
+     * @param { HashMap<String, EventDataType> } [ data ] - Data carried by the event.
      */
     @!APILevel[
         since: "24",
@@ -79,7 +79,7 @@ public class EventData {
 ]
 public class InnerEvent {
     /**
-     * Event ID.
+     * Event ID, which is used to identify an event
      */
     @!APILevel[
         since: "24",
@@ -88,7 +88,7 @@ public class InnerEvent {
     public var eventId: UInt32
 
     /**
-     * Event priority. The default value is EventPriority.LOW.
+     * Event priority of the event.
      */
     @!APILevel[
         since: "24",
@@ -99,8 +99,8 @@ public class InnerEvent {
     /**
      * InnerEvent constructor.
      *
-     * @param { UInt32 } eventId - Event ID.
-     * @param { EventPriority } [ priority ] - Event priority. The default value is EventPriority.LOW.
+     * @param { UInt32 } eventId - Event ID, which is used to identify an event.
+     * @param { EventPriority } [ priority ] - Event priority of the event. The default value is EventPriority.LOW.
      */
     @!APILevel[
         since: "24",
@@ -113,7 +113,7 @@ public class InnerEvent {
 }
 
 /**
- * Describes the event emit priority.
+ * Describes the optional arguments of emit operation.
  */
 @!APILevel[
     since: "24",
@@ -121,7 +121,7 @@ public class InnerEvent {
 ]
 public class Options {
     /**
-     * Event priority. The default value is EventPriority.LOW.
+     * Event priority of the event.
      */
     @!APILevel[
         since: "24",
@@ -132,7 +132,7 @@ public class Options {
     /**
      * Options constructor.
      *
-     * @param { EventPriority } [ priority ] - Event priority. The default value is EventPriority.LOW.
+     * @param { EventPriority } [ priority ] - Event priority of the event. The default value is EventPriority.LOW.
      */
     @!APILevel[
         since: "24",
@@ -144,7 +144,7 @@ public class Options {
 }
 
 /**
- * Enumerates the event priorities.
+ * Indicates the emit priority of the event.
  */
 @!APILevel[
     since: "24",
@@ -152,7 +152,7 @@ public class Options {
 ]
 public enum EventPriority {
     /**
-     * The event will be emitted immediately.
+     * Indicates that the event will be emitted immediately.
      */
     @!APILevel[
         since: "24",
@@ -160,7 +160,7 @@ public enum EventPriority {
     ]
     Immediate
     /**
-     * The event will be emitted before low-priority events.
+     * Indicates that the event will be emitted before low-priority events.
      */
     | @!APILevel[
         since: "24",
@@ -168,7 +168,7 @@ public enum EventPriority {
     ]
     High
     /**
-     * The event will be emitted before idle-priority events. By default, an event is in LOW priority.
+     * Indicates that the event will be emitted before idle-priority events. By default, an event is in LOW priority.
      */
     | @!APILevel[
         since: "24",
@@ -176,7 +176,7 @@ public enum EventPriority {
     ]
     Low
     /**
-     * The event will be emitted after all the other events.
+     * Indicates that the event will be emitted after all the other events.
      */
     | @!APILevel[
         since: "24",
