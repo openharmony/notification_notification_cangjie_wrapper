@@ -17,18 +17,64 @@ package ohos.value_type
 
 import ohos.labels.APILevel
 
-@!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Notification.CommonEvent"
+]
 public enum CommonEventValueType {
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] Int32Value(Int32)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] Float64Value(Float64)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] StringValue(String)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] BoolValue(Bool)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] FD(Int32)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] ArrayString(Array<String>)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] ArrayInt32(Array<Int32>)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] ArrayInt64(Array<Int64>)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] ArrayBool(Array<Bool>)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] ArrayFloat64(Array<Float64>)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"] ArrayFD(Array<Int32>)
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ] Int32Value(Int32)
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     | ...
 }
