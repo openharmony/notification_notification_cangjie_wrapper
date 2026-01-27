@@ -17,7 +17,10 @@ package ohos.common_event_subscriber
 
 import ohos.labels.APILevel
 
-@!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Notification.CommonEvent"
+]
 public class CommonEventSubscriber {
     
     public init() {
