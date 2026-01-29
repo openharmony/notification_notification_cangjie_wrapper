@@ -17,27 +17,51 @@ package ohos.common_event_subscribe_info
 
 import ohos.labels.APILevel
 
-@!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Notification.CommonEvent"
+]
 public class CommonEventSubscribeInfo {
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var events: Array<String>
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var priority: Int32
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var userId: Int32
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var publisherPermission: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var publisherDeviceId: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var publisherBundleName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public init(
         events: Array<String>,
         publisherPermission!: String = "",
