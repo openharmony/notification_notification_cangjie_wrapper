@@ -67,7 +67,7 @@ public class CommonEventManager {
         return ()
     }
     
-    public init() {
+    init() {
         super()
     }
 }
@@ -1067,7 +1067,7 @@ public class Support {
     ]
     public static const COMMON_EVENT_CONNECTIVITY_CHANGE: String = "usual.event.CONNECTIVITY_CHANGE"
     
-    public init() {
+    init() {
         super()
     }
 }
