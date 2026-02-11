@@ -17,17 +17,18 @@
 
 package ohos.events.emitter
 
-import ohos.callback_invoke.{CallbackObject, Callback1Argument}
-import ohos.ffi.Callback1Param
+import ohos.callback_invoke.{CallbackObject, Callback1Argument, CallbackList}
+import ohos.ffi.Callback2Param
 import ohos.labels.APILevel
-
+import ohos.hilog.HilogChannel
 import std.collection.{HashMap, ArrayList}
 import std.sync.Mutex
 
-let CALLBACK_MAP_FOR_STRING_EVENT: HashMap<String, ArrayList<EventCallback>> = HashMap<String, ArrayList<EventCallback>>()
-let CALLBACK_MAP_FOR_U32_EVENT: HashMap<UInt32, ArrayList<EventCallback>> = HashMap<UInt32, ArrayList<EventCallback>>()
-let MUTEX_FOR_STRING_EVENT: Mutex = Mutex()
-let MUTEX_FOR_U32_EVENT: Mutex = Mutex()
+let CONTROLLER_FOR_STRING_EVENT = HashMap<String, CallbackList>()
+let CONTROLLER_FOR_U32_EVENT = HashMap<UInt32, CallbackList>()
+let MUTEX_FOR_STRING_EVENT = Mutex()
+let MUTEX_FOR_U32_EVENT = Mutex()
+let EMITTER_LOG = HilogChannel(0, 0xD001201, "CJ-Emitter")
 
 /**
  * Subscribes to a certain event in persistent manner and receives the event callback.
@@ -42,23 +43,24 @@ let MUTEX_FOR_U32_EVENT: Mutex = Mutex()
 ]
 public func on(event: InnerEvent, callback: Callback1Argument<EventData>): Unit {
     let eventId = event.eventId
-    synchronized(MUTEX_FOR_U32_EVENT) { 
-        match (CALLBACK_MAP_FOR_U32_EVENT.get(eventId)) {
-            case Some(callbackList) => 
-                if (let Some(v) <- findCallbackObject(callbackList, callback)) {
-                    v.isFinished = false
-                    v.once = false
-                    return
-                }
-                callbackList.add(EventCallback(callback, once: false, isFinished: false))
-                return
+    synchronized(MUTEX_FOR_U32_EVENT) {
+        let callbackList = match (CONTROLLER_FOR_U32_EVENT.get(eventId)) {
+            case Some(v) => v
             case None =>
-                CALLBACK_MAP_FOR_U32_EVENT.add(eventId,
-                    ArrayList<EventCallback>([EventCallback(callback, once: false, isFinished: false)]))
+                let list = CallbackList()
+                CONTROLLER_FOR_U32_EVENT.add(eventId, list)
+                list
         }
-        let callbackList = CALLBACK_MAP_FOR_U32_EVENT[eventId]
-        let lambdaID = getLambdaId(callbackList, MUTEX_FOR_U32_EVENT)
-        unsafe { FfiOHOSEmitterOnU32Event(eventId, lambdaID) }
+        callbackList.addCallback(
+            callback,
+            onInitialize: { =>
+                let lambdaID = getLambdaIdByU32Id()
+                unsafe { FfiOHOSEmitterOnU32Event(lambdaID) }
+            },
+            onFailed: { =>
+                EMITTER_LOG.warn("The callback has been registered.")
+            }
+        )
     }
 }
 
@@ -75,26 +77,23 @@ public func on(event: InnerEvent, callback: Callback1Argument<EventData>): Unit 
 ]
 public func on(eventId: String, callback: Callback1Argument<EventData>): Unit {
     synchronized(MUTEX_FOR_STRING_EVENT) {
-        match (CALLBACK_MAP_FOR_STRING_EVENT.get(eventId)) {
-            case Some(callbackList) => 
-                if (let Some(v) <- findCallbackObject(callbackList, callback)) {
-                    v.isFinished = false
-                    v.once = false
-                    return
-                }
-                callbackList.add(EventCallback(callback, once: false, isFinished: false))
-                return
+        let callbackList = match (CONTROLLER_FOR_STRING_EVENT.get(eventId)) {
+            case Some(v) => v
             case None =>
-                CALLBACK_MAP_FOR_STRING_EVENT.add(eventId,
-                    ArrayList<EventCallback>([EventCallback(callback, once: false, isFinished: false)]))
+                let list = CallbackList()
+                CONTROLLER_FOR_STRING_EVENT.add(eventId, list)
+                list
         }
-        let callbackList = CALLBACK_MAP_FOR_STRING_EVENT[eventId]
-        let lambdaID = getLambdaId(callbackList, MUTEX_FOR_STRING_EVENT)
-        unsafe { 
-            try (id = LibC.mallocCString(eventId).asResource()) {
-                FfiOHOSEmitterOnStringEvent(id.value, lambdaID)
+        callbackList.addCallback(
+            callback,
+            onInitialize: { =>
+                let lambdaID = getLambdaIdByStringId()
+                unsafe { FfiOHOSEmitterOnStringEvent(lambdaID) }
+            },
+            onFailed: { =>
+                EMITTER_LOG.warn("The callback has been registered.")
             }
-         }
+        )
     }
 }
 
@@ -110,23 +109,25 @@ public func on(eventId: String, callback: Callback1Argument<EventData>): Unit {
 ]
 public func once(event: InnerEvent, callback: Callback1Argument<EventData>): Unit {
     let eventId = event.eventId
-    synchronized(MUTEX_FOR_U32_EVENT) { 
-        match (CALLBACK_MAP_FOR_U32_EVENT.get(eventId)) {
-            case Some(callbackList) => 
-                if (let Some(v) <- findCallbackObject(callbackList, callback)) {
-                    v.isFinished = false
-                    v.once = true
-                    return
-                }
-                callbackList.add(EventCallback(callback, once: true, isFinished: false))
-                return
+    synchronized(MUTEX_FOR_U32_EVENT) {
+        let callbackList = match (CONTROLLER_FOR_U32_EVENT.get(eventId)) {
+            case Some(v) => v
             case None =>
-                CALLBACK_MAP_FOR_U32_EVENT.add(eventId,
-                    ArrayList<EventCallback>([EventCallback(callback, once: true, isFinished: false)]))
+                let list = CallbackList()
+                CONTROLLER_FOR_U32_EVENT.add(eventId, list)
+                list
         }
-        let callbackList = CALLBACK_MAP_FOR_U32_EVENT[eventId]
-        let lambdaID = getLambdaId(callbackList, MUTEX_FOR_U32_EVENT)
-        unsafe { FfiOHOSEmitterOnceU32Event(eventId, lambdaID) }
+        callbackList.addCallback(
+            callback,
+            isOnce: true,
+            onInitialize: { =>
+                let lambdaID = getLambdaIdByU32Id()
+                unsafe { FfiOHOSEmitterOnU32Event(lambdaID) }
+            },
+            onFailed: { =>
+                EMITTER_LOG.warn("The callback has been registered.")
+            }
+        )
     }
 }
 
@@ -142,26 +143,24 @@ public func once(event: InnerEvent, callback: Callback1Argument<EventData>): Uni
 ]
 public func once(eventId: String, callback: Callback1Argument<EventData>): Unit {
     synchronized(MUTEX_FOR_STRING_EVENT) {
-        match (CALLBACK_MAP_FOR_STRING_EVENT.get(eventId)) {
-            case Some(callbackList) => 
-                if (let Some(v) <- findCallbackObject(callbackList, callback)) {
-                    v.isFinished = false
-                    v.once = true
-                    return
-                }
-                callbackList.add(EventCallback(callback, once: true, isFinished: false))
-                return
+        let callbackList = match (CONTROLLER_FOR_STRING_EVENT.get(eventId)) {
+            case Some(v) => v
             case None =>
-                CALLBACK_MAP_FOR_STRING_EVENT.add(eventId,
-                    ArrayList<EventCallback>([EventCallback(callback, once: true, isFinished: false)]))
+                let list = CallbackList()
+                CONTROLLER_FOR_STRING_EVENT.add(eventId, list)
+                list
         }
-        let callbackList = CALLBACK_MAP_FOR_STRING_EVENT[eventId]
-        let lambdaID = getLambdaId(callbackList, MUTEX_FOR_STRING_EVENT)
-        unsafe {
-            try (id = LibC.mallocCString(eventId).asResource()) {
-                FfiOHOSEmitterOnceStringEvent(id.value, lambdaID)
+        callbackList.addCallback(
+            callback,
+            isOnce: true,
+            onInitialize: { =>
+                let lambdaID = getLambdaIdByStringId()
+                unsafe { FfiOHOSEmitterOnStringEvent(lambdaID) }
+            },
+            onFailed: { =>
+                EMITTER_LOG.warn("The callback has been registered.")
             }
-        }
+        )
     }
 }
 
@@ -209,8 +208,9 @@ public func emit(eventId: String, options!: Options = Options(priority: EventPri
 ]
 public func off(eventId: UInt32): Unit {
     synchronized(MUTEX_FOR_U32_EVENT) {
-        if (CALLBACK_MAP_FOR_U32_EVENT.remove(eventId).isSome()) {
-            unsafe { FfiOHOSEmitterOffU32Event(eventId) }
+        match (CONTROLLER_FOR_U32_EVENT.get(eventId)) {
+            case Some(callbackList) => callbackList.removeAllCallback()
+            case None => EMITTER_LOG.warn("The event has not been registered.")
         }
     }
 }
@@ -226,12 +226,9 @@ public func off(eventId: UInt32): Unit {
 ]
 public func off(eventId: String): Unit {
     synchronized(MUTEX_FOR_STRING_EVENT) {
-        if (CALLBACK_MAP_FOR_STRING_EVENT.remove(eventId).isSome()) {
-            unsafe { 
-                try (id = LibC.mallocCString(eventId).asResource()) {
-                    FfiOHOSEmitterOffStringEvent(id.value)
-                }
-            }
+        match (CONTROLLER_FOR_STRING_EVENT.get(eventId)) {
+            case Some(callbackList) => callbackList.removeAllCallback()
+            case None => EMITTER_LOG.warn("The event has not been registered.")
         }
     }
 }
@@ -247,13 +244,16 @@ public func off(eventId: String): Unit {
     syscap: "SystemCapability.Notification.Emitter"
 ]
 public func off(eventId: UInt32, callback: Callback1Argument<EventData>): Unit {
-    synchronized(MUTEX_FOR_U32_EVENT) { 
-        if (let Some(callbackList) <- CALLBACK_MAP_FOR_U32_EVENT.get(eventId)) {
-            removeEventCallback(callbackList, callback)
-            if (callbackList.isEmpty()) {
-                CALLBACK_MAP_FOR_U32_EVENT.remove(eventId)
-                unsafe { FfiOHOSEmitterOffU32Event(eventId) }
-            }
+    synchronized(MUTEX_FOR_U32_EVENT) {
+        match (CONTROLLER_FOR_U32_EVENT.get(eventId)) {
+            case Some(callbackList) =>
+                callbackList.removeCallback(
+                    callback,
+                    onFailed: {
+                        => EMITTER_LOG.warn("The eventId(${eventId}) callback is not registered, no need to unregistered")
+                    }
+                )
+            case None => EMITTER_LOG.warn("The event has not been registered.")
         }
     }
 }
@@ -269,56 +269,38 @@ public func off(eventId: UInt32, callback: Callback1Argument<EventData>): Unit {
     syscap: "SystemCapability.Notification.Emitter"
 ]
 public func off(eventId: String, callback: Callback1Argument<EventData>): Unit {
-    synchronized(MUTEX_FOR_STRING_EVENT) { 
-        if (let Some(callbackList) <- CALLBACK_MAP_FOR_STRING_EVENT.get(eventId)) {
-            removeEventCallback(callbackList, callback)
-            if (callbackList.isEmpty()) {
-                CALLBACK_MAP_FOR_STRING_EVENT.remove(eventId)
-                unsafe {
-                    try (id = LibC.mallocCString(eventId).asResource()) {
-                        FfiOHOSEmitterOffStringEvent(id.value)
+    synchronized(MUTEX_FOR_STRING_EVENT) {
+        match (CONTROLLER_FOR_STRING_EVENT.get(eventId)) {
+            case Some(callbackList) =>
+                callbackList.removeCallback(
+                    callback,
+                    onFailed: {
+                        => EMITTER_LOG.warn("The eventId(${eventId}) callback is not registered, no need to unregistered")
                     }
-                }
-            }
+                )
+            case None => EMITTER_LOG.warn("The event has not been registered.")
         }
     }
 }
 
-func findCallbackObject(list: ArrayList<EventCallback>, callback: CallbackObject): ?EventCallback {
-    for (item in list) {
-        if (refEq(callback, item.callback)) {
-            return item
+func getLambdaIdByU32Id(): Int64 {
+    let wrapper = { id: UInt32, value: CEventData =>
+        synchronized (MUTEX_FOR_U32_EVENT) {
+            if (let Some(callbackList) <- CONTROLLER_FOR_U32_EVENT.get(id)) {
+                callbackList.invokeCallback(EventData(value))
+            }
         }
     }
-    return None
+    Callback2Param<UInt32, CEventData, Unit>(wrapper).getID()
 }
 
-func removeEventCallback(list: ArrayList<EventCallback>, callback: CallbackObject): Unit {
-    for (i in 0..list.size) {
-        if (refEq(callback, list[i].callback)) {
-            list.remove(at: i)
-            return
+func getLambdaIdByStringId(): Int64 {
+    let wrapper = { id: CString, value: CEventData =>
+        synchronized (MUTEX_FOR_STRING_EVENT) {
+            if (let Some(callbackList) <- CONTROLLER_FOR_STRING_EVENT.get(id.toString())) {
+                callbackList.invokeCallback(EventData(value))
+            }
         }
     }
-}
-
-func getLambdaId(callbackList: ArrayList<EventCallback>, mutex: Mutex): Int64 {
-    let wrapper = { value: CEventData =>
-        let callbacks = synchronized (mutex) {
-            let list = ArrayList<EventCallback>()
-            for (callback in callbackList) {
-                let eventCallback = EventCallback(callback.callback, once: callback.once, isFinished: callback.isFinished)
-                list.add(eventCallback)
-                callback.isFinished = true
-            }
-            list
-        }
-        for (eventCallback in callbacks) {
-            if (eventCallback.once && eventCallback.isFinished) {
-                continue
-            }
-            eventCallback.callback.invoke(None, EventData(value))
-        }
-    }
-    Callback1Param<CEventData, Unit>(wrapper).getID()
+    Callback2Param<CString, CEventData, Unit>(wrapper).getID()
 }

@@ -24,10 +24,8 @@ const BOOL_TYPE: Int8 = 1
 const STR_TYPE: Int8 = 2
 
 foreign {
-    func FfiOHOSEmitterOnU32Event(id: UInt32, funcId: Int64): Unit
-    func FfiOHOSEmitterOnStringEvent(id: CString, funcId: Int64): Unit
-    func FfiOHOSEmitterOnceU32Event(id: UInt32, funcId: Int64): Unit
-    func FfiOHOSEmitterOnceStringEvent(id: CString, funcId: Int64): Unit
+    func FfiOHOSEmitterOnU32Event(funcId: Int64): Unit
+    func FfiOHOSEmitterOnStringEvent(funcId: Int64): Unit
     func FfiOHOSEmitterEmitWithId(id: UInt32, priority: UInt32, data: CEventData): Unit
     func FfiOHOSEmitterEmitWithString(id: CString, priority: UInt32, data: CEventData): Unit
     func FfiOHOSEmitterOffU32Event(id: UInt32): Unit
