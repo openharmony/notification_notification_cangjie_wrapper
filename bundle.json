@@ -24,7 +24,8 @@
                 "ability_cangjie_wrapper",
                 "cangjie_ark_interop",
                 "common_event_service",
-                "hiviewdfx_cangjie_wrapper"
+                "hiviewdfx_cangjie_wrapper",
+                "eventhandler"
             ]
         },
         "build": {

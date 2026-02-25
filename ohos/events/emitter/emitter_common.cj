@@ -19,6 +19,7 @@ package ohos.events.emitter
 
 import ohos.labels.APILevel
 import ohos.callback_invoke.{Callback1Argument}
+import ohos.business_exception.BusinessException
 
 import std.collection.HashMap
 
@@ -230,16 +231,3 @@ public enum EventDataType {
     StringValue(String)
     | ...
 }
-
-class EventCallback {
-    let callback: Callback1Argument<EventData>
-    var once: Bool
-    var isFinished: Bool
-
-    init (callback: Callback1Argument<EventData>, once!: Bool, isFinished!: Bool) {
-        this.callback = callback
-        this.once = once
-        this.isFinished = isFinished
-    }
-}
-
