@@ -17,11 +17,15 @@ import("//build/ohos.gni")
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.events.emitter") {
-  sources = [
-    "emitter_common.cj",
-    "emitter_ffi.cj",
-    "emitter.cj",
-  ]
+  if (is_mingw || is_mac) {
+    sources = ["../../../mock/ohos.events.emitter.cj"]
+  } else {
+    sources = [
+      "emitter_common.cj",
+      "emitter_ffi.cj",
+      "emitter.cj",
+    ]
+  }
 
   external_deps = [ "eventhandler:cj_emitter_ffi" ]
 

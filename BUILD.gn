@@ -27,11 +27,6 @@ notification_cangjie_wrapper_packages_ohos = [
     "//base/notification/notification_cangjie_wrapper/ohos/events/emitter:ohos.events.emitter",
 ]
 
-notification_cangjie_wrapper_packages_kit = [
-    "//base/notification/notification_cangjie_wrapper/kit/NotificationKit:kit.NotificationKit",
-]
-
 copy_ohos_cangjie_sdk_api_lib("copy_sdk_notification_cangjie_libs") {
   ohos_inputs = notification_cangjie_wrapper_packages_ohos
-  kit_inputs = notification_cangjie_wrapper_packages_kit
 }

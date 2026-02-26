@@ -17,10 +17,14 @@ import("//build/ohos.gni")
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.notification_content") {
-  sources = [
-    "notification_content.cj",
-    "notification_content_ffi.cj",
-  ]
+  if (is_mingw || is_mac) {
+    sources = ["../../mock/ohos.notification_content.cj"]
+  } else {
+    sources = [
+      "notification_content.cj",
+      "notification_content_ffi.cj",
+    ]
+  }
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.business_exception",
