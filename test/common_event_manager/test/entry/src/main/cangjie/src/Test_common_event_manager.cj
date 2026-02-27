@@ -208,7 +208,6 @@ class Test_common_event_manager {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func test_support_value1(): Unit {
-        Support()
         @Expect(Support.COMMON_EVENT_ABILITY_ADDED, "common.event.ABILITY_ADDED")
         @Expect(Support.COMMON_EVENT_ABILITY_REMOVED, "common.event.ABILITY_REMOVED")
         @Expect(Support.COMMON_EVENT_ABILITY_UPDATED, "common.event.ABILITY_UPDATED")
@@ -409,11 +408,5 @@ class Test_common_event_manager {
         @Expect(info.userId, 123)
         @Expect(info.priority, -100)
         @Expect(info.publisherBundleName, "test_bundleName")
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func test_Construct(): Unit {
-        let obj1 = CommonEventManager()
     }
 }

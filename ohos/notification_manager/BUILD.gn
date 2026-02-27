@@ -17,11 +17,15 @@ import("//build/ohos.gni")
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.notification_manager") {
-  sources = [
-    "notification_manager.cj",
-    "notification_manager_exception.cj",
-    "notification_manager_ffi.cj",
-  ]
+  if (is_mingw || is_mac) {
+    sources = ["../../mock/ohos.notification_manager.cj"]
+  } else {
+    sources = [
+      "notification_manager.cj",
+      "notification_manager_exception.cj",
+      "notification_manager_ffi.cj",
+    ]
+  }
 
   cj_deps = [
     "../notification_flags:ohos.notification_flags",
