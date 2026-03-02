@@ -23,8 +23,6 @@ import ohos.labels.{APILevel, Hide}
 import ohos.multimedia.image.PixelMap
 import ohos.notification_content.NotificationContent
 import ohos.notification_flags.NotificationFlags
-import ohos.notification_flags.CNotificationFlags
-import ohos.notification_content.CNotificationContent
 
 @!APILevel[
     since: "24",
