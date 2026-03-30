@@ -19,21 +19,39 @@ import ohos.labels.APILevel
 import ohos.value_type.CommonEventValueType
 import std.collection.HashMap
 
-@!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Notification.CommonEvent"
+]
 public class CommonEventData {
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var event: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var bundleName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var code: Int32
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var data: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Notification.CommonEvent"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
     public var parameters: HashMap<String, CommonEventValueType>
     
     public init() {

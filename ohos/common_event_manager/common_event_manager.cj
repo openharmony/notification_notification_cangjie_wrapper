@@ -38,6 +38,7 @@ public import ohos.value_type.CommonEventValueType
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventManager {
+    init() {}
     /**
      * Publishes a common event.
      *
